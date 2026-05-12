@@ -3,153 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathis | Portfolio</title>
+    <title>Mathis | Portfolio IT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Couleurs issues de ton image */
         :root {
-            --bg-dark: #3d3d3d; /* Gris anthracite */
-            --card-bg: #5a5a5a; /* Gris plus clair pour les blocs */
-            --text-white: #ffffff;
-            --accent: #9ca3af; /* Gris lunaire */
+            --bg-color: #3d3d3d;
+            --card-bg: #555555;
+            --text-main: #ffffff;
+            --text-sub: #d1d1d1;
+            --border-round: 40px;
         }
 
         body {
-            font-family: 'Georgia', serif; /* Police plus élégante/mystique */
-            background-color: var(--bg-dark);
-            color: var(--text-white);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Décorations lunes (SVG intégrés pour que ça marche direct) */
+        /* Décorations lunes */
         .moon-top {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            opacity: 0.8;
+            top: 10px;
+            right: 10px;
+            width: 150px;
+            filter: grayscale(1) brightness(1.5);
         }
 
         .moon-bottom {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 80px;
+            width: 120px;
+            filter: grayscale(1) brightness(1.2);
+            z-index: 10;
+        }
+
+        .stars-divider {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
             opacity: 0.6;
-            z-index: -1;
+            filter: invert(1);
         }
 
         header {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px 40px;
         }
 
         h1 {
-            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
             margin: 0;
-            letter-spacing: 2px;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-top: 10px;
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-sub);
+            font-weight: 300;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Les blocs arrondis comme sur ton image */
-        .section-box {
+        /* Section À Propos */
+        .about-box {
             background-color: var(--card-bg);
-            border-radius: 50px; /* Bordures très arrondies */
-            padding: 30px 50px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: var(--border-round);
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        h2 {
-            font-style: italic;
-            border-bottom: 1px solid var(--accent);
-            display: inline-block;
-            margin-bottom: 20px;
+        .about-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-top: 0;
         }
 
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: white; }
+
+        /* Grille de projets */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
+            margin-top: 30px;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
+            background-color: transparent;
+            border: 2px solid #777;
+            border-radius: 25px;
+            padding: 25px;
             transition: 0.3s;
         }
 
         .project-card:hover {
-            background: var(--accent);
-            color: var(--bg-dark);
+            border-color: white;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #444;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        /* Contact */
+        .contact-info {
+            margin-top: 60px;
+            font-size: 1.1rem;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px;
             font-size: 0.8rem;
-            opacity: 0.5;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .moon-top { width: 80px; }
         }
     </style>
 </head>
 <body>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/1803/1803125.png" class="moon-top" alt="moon">
+    <img src="https://img.icons8.com/ios-filled/200/FFFFFF/moon-symbol.png" class="moon-top" alt="lune">
+    <img src="https://img.icons8.com/ios/200/FFFFFF/crescent-moon.png" class="moon-bottom" alt="lune bas">
 
     <header>
         <h1>Mathis</h1>
-        <div class="subtitle">Futur Expert IT | Développeur | Passionné</div>
+        <p class="tagline">Futur Expert IT | Développeur | Passionné</p>
     </header>
 
     <div class="container">
         
-        <section class="section-box">
+        <section class="about-box">
             <h2>À propos</h2>
-            <p>Bonjour ! Je suis Mathis, étudiant passionné par les infrastructures réseau et le développement. Bienvenue dans mon univers technique sous les étoiles.</p>
+            <p>Bonjour ! Je suis Mathis, étudiant passionné par les infrastructures réseau et le développement. Je construis ce portfolio pour partager mes projets et mon évolution dans le monde de l'informatique.</p>
         </section>
 
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">À Propos</a>
+            <a href="#">Projets</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <img src="https://img.icons8.com/ios/100/FFFFFF/sparkling-stars.png" class="stars-divider" alt="etoiles">
+
         <section id="projets">
-            <h2 style="margin-left: 20px;">Mes Projets</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Mes Projets</h2>
+            
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Lunoxe</h3>
-                    <p>Script d'automatisation</p>
+                    <h3>Code adapter</h3>
+                    <p>Développement d'infrastructures réseaux et optimisation de scripts.</p>
+                    <div class="tags">
+                        <span class="tag">Tags</span> <span class="tag">Python</span> <span class="tag">IT</span>
+                    </div>
                 </div>
+
                 <div class="project-card">
-                    <h3>SkyNet</h3>
-                    <p>Infrastructure Réseau</p>
-                </div>
-                <div class="project-card">
-                    <h3>Astro-Code</h3>
-                    <p>Application Web</p>
+                    <h3>GitHub Pro</h3>
+                    <p>Mise en place d'un environnement de déploiement continu.</p>
+                    <div class="tags">
+                        <span class="tag">Git</span> <span class="tag">CI/CD</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-box" style="margin-top: 50px;">
-            <h2>Contact</h2>
-            <p>Email : mathis@example.com</p>
-            <p>GitHub : @gilmathis498-create</p>
+        <img src="https://img.icons8.com/ios/100/FFFFFF/sparkling-stars.png" class="stars-divider" alt="etoiles">
+
+        <section class="contact-info">
+            <h2 style="font-family: 'Playfair Display', serif;">Contact</h2>
+            <p><strong>Email :</strong> mathis@gmail.com</p>
+            <p><strong>GitHub :</strong> <a href="#" style="color: white;">https://github.com/gilmathis498-create</a></p>
         </section>
 
     </div>
-
-    <img src="https://cdn-icons-png.flaticon.com/512/547/547433.png" class="moon-bottom" alt="moon-bottom">
 
     <footer>
         &copy; 2026 - Créé avec passion par Mathis
