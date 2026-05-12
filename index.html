@@ -133,6 +133,9 @@
             padding: 30px;
             transition: 0.4s;
             background: rgba(255,255,255,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
@@ -147,8 +150,27 @@
             margin-top: 0;
         }
 
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .project-link:hover {
+            background-color: white;
+            color: var(--bg-color);
+        }
+
         .tags {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             margin-top: 20px;
         }
@@ -200,23 +222,28 @@
 
         <div class="stars-divider">✦ ✶ ✦</div>
 
-        <section>
+        <section id="projets">
             <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px;">Mes Projets</h2>
             
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Code adapter</h3>
-                    <p>Développement d'infrastructures réseaux et optimisation de scripts système.</p>
+                    <div>
+                        <h3>Code adapter</h3>
+                        <p>Développement d'infrastructures réseaux et optimisation de scripts système.</p>
+                    </div>
                     <div class="tags">
                         <span class="tag">Python</span> <span class="tag">Réseau</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Lunoxe</h3>
-                    <p>Interface web moderne avec design lunaire et gestion de base de données.</p>
+                    <div>
+                        <h3>Lunoxe</h3>
+                        <p>Système automatisé de capture de logs Wi-Fi conforme aux exigences de la CNIL.</p>
+                        <a href="lunoxe.html" class="project-link">Lire la Documentation ➔</a>
+                    </div>
                     <div class="tags">
-                        <span class="tag">HTML/CSS</span> <span class="tag">JS</span>
+                        <span class="tag">Python</span> <span class="tag">Réseau</span> <span class="tag">Sécurité</span>
                     </div>
                 </div>
             </div>
