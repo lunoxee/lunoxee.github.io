@@ -11,7 +11,7 @@
             --card-bg: #555555;
             --text-main: #ffffff;
             --text-sub: #d1d1d1;
-            --border-round: 40px;
+            --border-round: 50px;
         }
 
         body {
@@ -21,49 +21,59 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Décorations lunes */
+        /* LUNE EN HAUT A DROITE */
         .moon-top {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 150px;
-            filter: grayscale(1) brightness(1.5);
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='1' fill='white'/%3E%3C/svg%3E") no-repeat center;
+            opacity: 0.8;
         }
 
+        /* LUNE EN BAS A GAUCHE */
         .moon-bottom {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 120px;
-            filter: grayscale(1) brightness(1.2);
-            z-index: 10;
+            width: 100px;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'%3E%3C/path%3E%3Cpath d='M19 3v4M17 5h4' stroke-width='1'/%3E%3C/svg%3E") no-repeat center;
+            opacity: 0.5;
+            z-index: -1;
         }
 
+        /* ETOILES DE SEPARATION */
         .stars-divider {
-            display: block;
-            margin: 20px auto;
-            width: 200px;
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-sub);
+            margin: 40px 0;
+            letter-spacing: 15px;
             opacity: 0.6;
-            filter: invert(1);
         }
 
         header {
             text-align: center;
-            padding: 100px 20px 40px;
+            padding: 120px 20px 60px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
             margin: 0;
+            font-weight: 700;
         }
 
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-sub);
             font-weight: 300;
+            margin-top: 10px;
         }
 
         .container {
@@ -76,22 +86,24 @@
         .about-box {
             background-color: var(--card-bg);
             border-radius: var(--border-round);
-            padding: 40px;
+            padding: 40px 60px;
             margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
         .about-box h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-top: 0;
+            font-style: italic;
         }
 
         /* Navigation */
         nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 60px;
         }
 
@@ -100,74 +112,72 @@
             text-decoration: none;
             font-size: 1.1rem;
             transition: 0.3s;
+            border-bottom: 1px solid transparent;
         }
 
-        nav a:hover { color: white; }
+        nav a:hover { 
+            color: white; 
+            border-bottom: 1px solid white;
+        }
 
         /* Grille de projets */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
-            background-color: transparent;
-            border: 2px solid #777;
-            border-radius: 25px;
-            padding: 25px;
-            transition: 0.3s;
+            border: 2px solid #666;
+            border-radius: 30px;
+            padding: 30px;
+            transition: 0.4s;
+            background: rgba(255,255,255,0.02);
         }
 
         .project-card:hover {
             border-color: white;
-            background-color: rgba(255,255,255,0.05);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
         }
 
         .project-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-top: 0;
         }
 
         .tags {
             display: flex;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .tag {
-            background: #444;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            color: var(--text-sub);
-        }
-
-        /* Contact */
-        .contact-info {
-            margin-top: 60px;
-            font-size: 1.1rem;
+            background: #4a4a4a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: white;
         }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
-            font-size: 0.8rem;
-            color: #888;
+            padding: 80px 20px;
+            font-size: 0.9rem;
+            color: #777;
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 3rem; }
-            .moon-top { width: 80px; }
+            h1 { font-size: 3.5rem; }
+            .about-box { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <img src="https://img.icons8.com/ios-filled/200/FFFFFF/moon-symbol.png" class="moon-top" alt="lune">
-    <img src="https://img.icons8.com/ios/200/FFFFFF/crescent-moon.png" class="moon-bottom" alt="lune bas">
+    <div class="moon-top"></div>
+    <div class="moon-bottom"></div>
 
     <header>
         <h1>Mathis</h1>
@@ -188,42 +198,42 @@
             <a href="#">Contact</a>
         </nav>
 
-        <img src="https://img.icons8.com/ios/100/FFFFFF/sparkling-stars.png" class="stars-divider" alt="etoiles">
+        <div class="stars-divider">✦ ✶ ✦</div>
 
-        <section id="projets">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Mes Projets</h2>
+        <section>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px;">Mes Projets</h2>
             
             <div class="project-grid">
                 <div class="project-card">
                     <h3>Code adapter</h3>
-                    <p>Développement d'infrastructures réseaux et optimisation de scripts.</p>
+                    <p>Développement d'infrastructures réseaux et optimisation de scripts système.</p>
                     <div class="tags">
-                        <span class="tag">Tags</span> <span class="tag">Python</span> <span class="tag">IT</span>
+                        <span class="tag">Python</span> <span class="tag">Réseau</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>GitHub Pro</h3>
-                    <p>Mise en place d'un environnement de déploiement continu.</p>
+                    <h3>Lunoxe</h3>
+                    <p>Interface web moderne avec design lunaire et gestion de base de données.</p>
                     <div class="tags">
-                        <span class="tag">Git</span> <span class="tag">CI/CD</span>
+                        <span class="tag">HTML/CSS</span> <span class="tag">JS</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <img src="https://img.icons8.com/ios/100/FFFFFF/sparkling-stars.png" class="stars-divider" alt="etoiles">
+        <div class="stars-divider">✶ ✦ ✶</div>
 
-        <section class="contact-info">
-            <h2 style="font-family: 'Playfair Display', serif;">Contact</h2>
-            <p><strong>Email :</strong> mathis@gmail.com</p>
-            <p><strong>GitHub :</strong> <a href="#" style="color: white;">https://github.com/gilmathis498-create</a></p>
+        <section style="text-align: center; padding: 40px 0;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Contact</h2>
+            <p>Email : <strong>mathis@gmail.com</strong></p>
+            <p>GitHub : <strong>@gilmathis498-create</strong></p>
         </section>
 
     </div>
 
     <footer>
-        &copy; 2026 - Créé avec passion par Mathis
+        &copy; 2026 - Design Lunaire par Mathis
     </footer>
 
 </body>
