@@ -2,10 +2,129 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio de Mathis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathis | Portfolio IT</title>
+    <style>
+        /* Style moderne et minimaliste */
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --accent: #38bdf8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        .tagline { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section { margin-bottom: 60px; }
+        h2 { border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 30px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            border: 1px solid #334155;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .badge {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue sur mon Portfolio IT</h1>
-    <p>Ceci est ma future page web hébergée sur GitHub !</p>
+
+    <header>
+        <h1>Mathis</h1>
+        <p class="tagline">Futur Expert IT | Développeur | Passionné</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>À propos</h2>
+            <p>Bonjour ! Je suis Mathis, étudiant passionné par les infrastructures réseau et le développement. Je construis ce portfolio pour partager mes projets et mon évolution dans le monde de l'informatique.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Mes Projets</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Projet Lunoxe</h3>
+                    <p>Une description rapide de ce que fait ton projet Lunoxe. Par exemple, un outil d'automatisation ou une application web.</p>
+                    <span class="badge">Python</span> <span class="badge">API</span>
+                </div>
+
+                <div class="card">
+                    <h3>Infrastructure Réseau</h3>
+                    <p>Simulation d'un réseau d'entreprise sécurisé sous Cisco Packet Tracer avec VLANs et Routage.</p>
+                    <span class="badge">Réseau</span> <span class="badge">Sécurité</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Envie de discuter d'un projet ? Retrouvez-moi sur :</p>
+            <p>
+                <strong>Email :</strong> ton.email@exemple.com<br>
+                <strong>GitHub :</strong> github.com/gilmathis498-create
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 - Créé avec passion par Mathis
+    </footer>
+
 </body>
 </html>
