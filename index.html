@@ -99,6 +99,23 @@
             font-style: italic;
         }
 
+        .cv-button {
+            display: inline-block;
+            margin-top: 25px;
+            background-color: white;
+            color: var(--bg-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cv-button:hover {
+            transform: scale(1.05);
+            background-color: #d1d1d1;
+        }
+
         /* Navigation */
         nav {
             display: flex;
@@ -203,7 +220,7 @@
 
     <header>
         <h1>Mathis Gil</h1>
-        <p class="tagline">Futur Expert IT </p>
+        <p class="tagline">Futur Expert IT</p>
     </header>
 
     <div class="container">
@@ -211,6 +228,8 @@
         <section class="about-box">
             <h2>À propos</h2>
             <p>Bonjour ! Je suis étudiant dans le domaine de l'IT en BTS SIO SISR</p>
+            
+            <a href="cv.html" class="cv-button">Voir mon CV complet 📄</a>
         </section>
 
         <nav>
