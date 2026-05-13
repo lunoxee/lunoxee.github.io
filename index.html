@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathis | Portfolio IT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #3d3d3d;
+            --card-bg: #555555;
+            --text-main: #ffffff;
+            --text-sub: #d1d1d1;
+            --border-round: 50px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* LUNE EN HAUT A DROITE */
+        .moon-top {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            background: url("Lune 1.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.85;
+            animation: floatAnimation 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+        }
+
+        /* LUNE EN BAS A GAUCHE */
+        .moon-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background: url("Lune 2.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.6;
+            z-index: -1;
+            animation: floatAnimation 5s ease-in-out infinite reverse;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+        }
+
+        /* ETOILES DE SEPARATION */
+        .stars-divider {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-sub);
+            margin: 40px 0;
+            letter-spacing: 15px;
+            opacity: 0.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 140px 20px 80px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-sub);
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section À Propos */
+        .about-box {
+            background-color: rgba(85, 85, 85, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-round);
+            padding: 40px 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: slideInRight 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .about-box:hover {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .about-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-top: 0;
+            font-style: italic;
+        }
+
+        .cv-button {
+            display: inline-block;
+            margin-top: 25px;
+            background-color: white;
+            color: var(--bg-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .cv-button:hover {
+            transform: scale(1.05);
+            background-color: #d1d1d1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { 
+            color: white; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Grille de projets */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            justify-content: center; /* Centre les cartes si elles ne sont pas nombreuses */
+        }
+
+        .project-card {
+            background: rgba(85, 85, 85, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 450px;
+            margin: 0 auto;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .project-card:hover {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .project-link:hover {
+            background-color: white;
+            color: var(--bg-color);
+            border-color: white;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(74, 74, 74, 0.8);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #d1d1d1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(100, 100, 100, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            font-size: 0.9rem;
+            color: #777;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3.5rem; }
+            .about-box { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="moon-top"></div>
+    <div class="moon-bottom"></div>
+
+    <header>
+        <h1>Mathis Gil</h1>
+        <p class="tagline">Futur Expert IT</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="about-box">
+            <h2>À propos</h2>
+            <p>Bonjour ! Je suis étudiant dans le domaine de l'IT en BTS SIO SISR</p>
+            <a href="cv.html" class="cv-button">Voir mon CV complet 📄</a>
+        </section>
+
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">À Propos</a>
+            <a href="#">Projets</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="stars-divider">✦ ✶ ✦</div>
+
+        <section id="projets">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; text-align: center;">Mes Projets</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>Lunoxe</h3>
+                        <p>Système automatisé de capture de logs Wi-Fi conforme aux exigences de la CNIL.</p>
+                        <a href="lunoxe.html" class="project-link">Lire la Documentation ➔</a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">Réseau</span> <span class="tag">Sécurité</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="stars-divider">✶ ✦ ✶</div>
+
+        <section style="text-align: center; padding: 40px 0;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Contact</h2>
+            <p>Email : <strong>gilmathis498@gmail.com</strong></p>
+            <p>GitHub : <strong>@gilmathis498-create</strong></p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 - Design Lunaire par Mathis
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Lunoxe | Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #3d3d3d;
+            --card-bg: #555555;
+            --text-main: #ffffff;
+            --text-sub: #d1d1d1;
+            --accent: #9ca3af;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Style des sections de doc */
+        .doc-section {
+            background: rgba(85, 85, 85, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideInLeft 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .doc-section:hover {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            border-bottom: 1px solid #777;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 25px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .stars {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 40px 0;
+            opacity: 0.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #888;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        /* LUNES DECORATIVES */
+        .moon-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: url("Lune 1.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.6;
+            animation: floatAnimation 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+        }
+
+        .moon-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 90px;
+            height: 90px;
+            background: url("Lune 2.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.5;
+            z-index: -1;
+            animation: floatAnimation 5s ease-in-out infinite reverse;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+        }
+    </style>
+</head>
+<body>
+    <div class="moon-top"></div>
+    <div class="moon-bottom"></div>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Retour au Portfolio</a>
+            <h1>Projet Lunoxe</h1>
+            <p style="color: var(--text-sub);">Documentation Technique : Capture et Gestion des Logs</p>
+        </header>
+
+        <section class="doc-section">
+            <h2>Besoin du projet</h2>
+            <p>L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].</p>
+            <p>Les informations à tracer impérativement sont :</p>
+            <ul>
+                <li>Date et heure de la connexion [cite: 15]</li>
+                <li>MAC source et destination [cite: 16, 17]</li>
+                <li>IP source et destination [cite: 18, 20]</li>
+                <li>Ports source et destination [cite: 19, 21]</li>
+            </ul>
+        </section>
+
+        <div class="stars">✦ ✶ ✦</div>
+
+        <section class="doc-section">
+            <h2>Recherche et Solution</h2>
+            <p>Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l'utilisateur[cite: 24, 27, 30].</p>
+            <h3>Optimisations :</h3>
+            <p>Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Sécurité de l'Infrastructure</h2>
+            <p>Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:</p>
+            <ul>
+                <li>Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].</li>
+                <li>Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].</li>
+                <li>Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion[cite: 58].</li>
+                <li>Limitation des connexions simultanées et restriction des privilèges[cite: 57].</li>
+            </ul>
+        </section>
+
+        <div class="stars">✶ ✦ ✶</div>
+
+        <section class="doc-section">
+            <h2>Résultats</h2>
+            <p>Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].</p>
+        </section>
+
+        <footer>
+            &copy; 2026 - Documentation réalisée par Mathis
+        </footer>
+    </div>
+
+</body>
+</html>

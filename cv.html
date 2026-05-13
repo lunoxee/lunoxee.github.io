@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Mathis GIL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #3d3d3d;
+            --card-bg: #555555;
+            --text-main: #ffffff;
+            --text-sub: #d1d1d1;
+            --accent: #9ca3af;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(85, 85, 85, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            animation: fadeInDown 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 5px 0 0 0;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            border-left: 4px solid white;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+
+        .sidebar-section p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .experience-item, .formation-item {
+            margin-bottom: 25px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .back-nav {
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .back-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .cv-grid { grid-template-columns: 1fr; }
+            header { text-align: center; justify-content: center; }
+            .container { margin: 10px; padding: 20px; }
+        }
+
+        /* LUNES DECORATIVES */
+        .moon-top {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background: url("Lune 1.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.6;
+            animation: floatAnimation 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+        }
+
+        .moon-bottom {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 90px;
+            height: 90px;
+            background: url("Lune 2.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.5;
+            z-index: -1;
+            animation: floatAnimation 5s ease-in-out infinite reverse;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+        }
+    </style>
+</head>
+<body>
+    <div class="moon-top"></div>
+    <div class="moon-bottom"></div>
+
+    <div class="back-nav">
+        <a href="index.html" class="back-link">← Retour au Portfolio</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-text">
+                <h1>Mathis GIL</h1>
+                <p>Technicien système et réseau en alternance</p>
+            </div>
+        </header>
+
+        <div class="cv-grid">
+            <!-- Colonne de gauche (Sidebar) -->
+            <aside>
+                <section class="sidebar-section">
+                    <h2>Contact</h2>
+                    <p>📍 Marignane, 13700</p>
+                    <p>📞 06 24 78 41 48</p>
+                    <p>📧 gilmathis498@gmail.com</p>
+                    <p>🎂 19 ans (18/10/2006)</p>
+                    <p>🚗 Permis B</p>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2>Compétences</h2>
+                    <ul>
+                        <li>Montage / Démontage PC</li>
+                        <li>HTML & Python</li>
+                        <li>Maintenance de serveurs</li>
+                        <li>Paramétrage BIOS</li>
+                        <li>Pack Office</li>
+                    </ul>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2>Savoir-être</h2>
+                    <ul>
+                        <li>Polyvalent</li>
+                        <li>Ambitieux</li>
+                        <li>Organisé</li>
+                        <li>Responsable</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- Colonne de droite (Main) -->
+            <main>
+                <section>
+                    <h2>Expériences</h2>
+                    <div class="experience-item">
+                        <div class="item-title">Équipier polyvalent - McDonald's</div>
+                        <div class="item-meta">Juin - Août 2023 | Marignane</div>
+                        <ul>
+                            <li>Préparation des commandes</li>
+                            <li>Service à table</li>
+                            <li>Plonge et entretien</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-title">Stage Vétérinaire</div>
+                        <div class="item-meta">Nov. 2021 | Cabinet La Gavotte</div>
+                        <ul>
+                            <li>Observation d'opérations</li>
+                            <li>Entretien des salles de consultation</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2>Formations</h2>
+                    <div class="formation-item">
+                        <div class="item-title">BTS SIO (Services Informatiques aux Organisations)</div>
+                        <div class="item-meta">2025 - 2027 | M2S Formation, Vitrolles</div>
+                    </div>
+                    <div class="formation-item">
+                        <div class="item-title">Baccalauréat Général</div>
+                        <div class="item-meta">2022 - 2025 | Lycée Maurice Genevoix</div>
+                    </div>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2>Intérêts</h2>
+                    <p>🎹 <strong>Piano :</strong> 4-5 ans en autodidacte</p>
+                    <p>🏀 <strong>Basket</strong></p>
+                    <p>💻 <strong>Informatique :</strong> Optimisation système</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
