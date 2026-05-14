@@ -415,10 +415,12 @@
         }
 
         body.music-theme {
-            --bg-color: #181818;
-            --card-bg: #262626;
-            --text-sub: #ece1c8;
-            background-color: #171717;
+            --bg-color: #121212;
+            --card-bg: #181818;
+            --text-sub: #b3b3b3;
+            background-color: #121212;
+            background-image: none;
+            animation: none;
         }
 
         body.music-theme .about-box,
@@ -429,10 +431,10 @@
             overflow: hidden;
             cursor: pointer;
             background:
-                radial-gradient(circle at 50% 50%, rgba(245, 235, 190, 0.98) 0 7%, transparent 7.5%),
-                repeating-radial-gradient(circle at 50% 50%, #121212 0 7px, #1f1f1f 8px 12px, #0b0b0b 13px 16px);
-            border-color: rgba(245, 235, 190, 0.45);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.34), inset 0 0 40px rgba(255, 255, 255, 0.04);
+                radial-gradient(circle at 50% 50%, #1db954 0 8%, #121212 8.5% 12%, transparent 12.5%),
+                repeating-radial-gradient(circle at 50% 50%, #050505 0 7px, #171717 8px 12px, #0b0b0b 13px 16px);
+            border-color: rgba(29, 185, 84, 0.75);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42), 0 0 24px rgba(29, 185, 84, 0.12);
         }
 
         body.music-theme .about-box::before,
@@ -445,6 +447,34 @@
             border-radius: inherit;
             background: conic-gradient(from 20deg, transparent, rgba(255, 255, 255, 0.08), transparent 18%, transparent);
             pointer-events: none;
+            z-index: 0;
+        }
+
+        body.music-theme .about-box > *,
+        body.music-theme .project-card > *,
+        body.music-theme .doc-section > *,
+        body.music-theme .cv-vinyl > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        body.music-theme .music-theme-toggle {
+            background: #1db954;
+            border-color: #1ed760;
+            color: #121212;
+        }
+
+        body.music-theme .moon-top,
+        body.music-theme .moon-bottom,
+        body.music-theme .scroll-moon,
+        body.music-theme .stars-divider,
+        body.music-theme .stars,
+        body.music-theme .star-dust {
+            display: none;
+        }
+
+        body.music-theme::before {
+            display: none;
         }
 
         body.music-theme .vinyl-spin {
@@ -463,7 +493,7 @@
             inset: 0;
             pointer-events: none;
             opacity: 0;
-            z-index: 2;
+            z-index: 0;
             background-image:
                 radial-gradient(2px 2px at 12% 18%, rgba(255, 255, 255, 0.95), transparent),
                 radial-gradient(2px 2px at 28% 72%, rgba(255, 255, 255, 0.85), transparent),
@@ -642,6 +672,10 @@
 
         // Flash d'etoiles et poussiere lumineuse au clic
         document.addEventListener('click', function(event) {
+            if (document.body.classList.contains('music-theme')) {
+                return;
+            }
+
             const clickedLink = event.target.closest('a[href]');
 
             document.body.classList.remove('star-flash');
