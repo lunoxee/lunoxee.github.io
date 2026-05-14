@@ -30,6 +30,42 @@
             50% { transform: translateY(-8px); }
         }
 
+        @keyframes spaceDrift {
+            0% {
+                transform: translateZ(0) rotate(0deg);
+                opacity: 0.7;
+                filter: drop-shadow(0 4px 14px rgba(255, 255, 255, 0.12));
+            }
+            50% {
+                transform: translate3d(10px, 8px, 20px) rotate(6deg);
+                opacity: 0.85;
+                filter: drop-shadow(0 6px 18px rgba(255, 255, 255, 0.18));
+            }
+            100% {
+                transform: translateZ(0) rotate(0deg);
+                opacity: 0.7;
+                filter: drop-shadow(0 4px 14px rgba(255, 255, 255, 0.12));
+            }
+        }
+
+        @keyframes spaceDriftReverse {
+            0% {
+                transform: translateZ(0) rotate(0deg);
+                opacity: 0.6;
+                filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+            }
+            50% {
+                transform: translate3d(-10px, -10px, 10px) rotate(-4deg);
+                opacity: 0.75;
+                filter: drop-shadow(0 6px 16px rgba(255, 255, 255, 0.14));
+            }
+            100% {
+                transform: translateZ(0) rotate(0deg);
+                opacity: 0.6;
+                filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+            }
+        }
+
         @keyframes slideInLeft {
             from {
                 opacity: 0;
@@ -43,11 +79,112 @@
 
         body {
             background-color: var(--bg-color);
+            background-image:
+                /* Étoiles fixes - couche 1 */
+                radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+                radial-gradient(1px 1px at 20% 40%, #eee, transparent),
+                radial-gradient(1px 1px at 30% 60%, #fff, transparent),
+                radial-gradient(1px 1px at 40% 80%, #eee, transparent),
+                radial-gradient(1px 1px at 50% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 60% 30%, #eee, transparent),
+                radial-gradient(1px 1px at 70% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 70%, #eee, transparent),
+                radial-gradient(1px 1px at 90% 90%, #fff, transparent),
+                radial-gradient(1px 1px at 15% 85%, #eee, transparent),
+                radial-gradient(1px 1px at 25% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 35% 35%, #eee, transparent),
+                radial-gradient(1px 1px at 45% 55%, #fff, transparent),
+                radial-gradient(1px 1px at 55% 75%, #eee, transparent),
+                radial-gradient(1px 1px at 65% 5%, #fff, transparent),
+                radial-gradient(1px 1px at 75% 25%, #eee, transparent),
+                radial-gradient(1px 1px at 85% 45%, #fff, transparent),
+                radial-gradient(1px 1px at 5% 65%, #eee, transparent),
+                radial-gradient(1px 1px at 95% 85%, #fff, transparent),
+                radial-gradient(1px 1px at 12% 95%, #eee, transparent),
+                /* Étoiles fixes - couche 2 */
+                radial-gradient(1px 1px at 3% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 13% 50%, #eee, transparent),
+                radial-gradient(1px 1px at 23% 70%, #fff, transparent),
+                radial-gradient(1px 1px at 33% 90%, #eee, transparent),
+                radial-gradient(1px 1px at 43% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 53% 35%, #eee, transparent),
+                radial-gradient(1px 1px at 63% 55%, #fff, transparent),
+                radial-gradient(1px 1px at 73% 75%, #eee, transparent),
+                radial-gradient(1px 1px at 83% 95%, #fff, transparent),
+                radial-gradient(1px 1px at 93% 5%, #eee, transparent),
+                radial-gradient(1px 1px at 7% 25%, #fff, transparent),
+                radial-gradient(1px 1px at 17% 45%, #eee, transparent),
+                radial-gradient(1px 1px at 27% 65%, #fff, transparent),
+                radial-gradient(1px 1px at 37% 85%, #eee, transparent),
+                radial-gradient(1px 1px at 47% 8%, #fff, transparent),
+                radial-gradient(1px 1px at 57% 28%, #eee, transparent),
+                radial-gradient(1px 1px at 67% 48%, #fff, transparent),
+                radial-gradient(1px 1px at 77% 68%, #eee, transparent),
+                radial-gradient(1px 1px at 87% 88%, #fff, transparent),
+                radial-gradient(1px 1px at 97% 12%, #eee, transparent),
+                /* Étoiles fixes - couche 3 */
+                radial-gradient(1px 1px at 6% 18%, #fff, transparent),
+                radial-gradient(1px 1px at 16% 38%, #eee, transparent),
+                radial-gradient(1px 1px at 26% 58%, #fff, transparent),
+                radial-gradient(1px 1px at 36% 78%, #eee, transparent),
+                radial-gradient(1px 1px at 46% 98%, #fff, transparent),
+                radial-gradient(1px 1px at 56% 22%, #eee, transparent),
+                radial-gradient(1px 1px at 66% 42%, #fff, transparent),
+                radial-gradient(1px 1px at 76% 62%, #eee, transparent),
+                radial-gradient(1px 1px at 86% 82%, #fff, transparent),
+                radial-gradient(1px 1px at 96% 6%, #eee, transparent),
+                radial-gradient(1px 1px at 2% 26%, #fff, transparent),
+                radial-gradient(1px 1px at 12% 46%, #eee, transparent),
+                radial-gradient(1px 1px at 22% 66%, #fff, transparent),
+                radial-gradient(1px 1px at 32% 86%, #eee, transparent),
+                radial-gradient(1px 1px at 42% 14%, #fff, transparent),
+                radial-gradient(1px 1px at 52% 34%, #eee, transparent),
+                radial-gradient(1px 1px at 62% 54%, #fff, transparent),
+                radial-gradient(1px 1px at 72% 74%, #eee, transparent),
+                radial-gradient(1px 1px at 82% 94%, #fff, transparent),
+                radial-gradient(1px 1px at 92% 16%, #eee, transparent),
+                /* Étoiles scintillantes - couche 1 */
+                radial-gradient(2px 2px at 8% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 18% 35%, #eee, transparent),
+                radial-gradient(2px 2px at 28% 55%, #fff, transparent),
+                radial-gradient(2px 2px at 38% 75%, #eee, transparent),
+                radial-gradient(2px 2px at 48% 5%, #fff, transparent),
+                radial-gradient(2px 2px at 58% 25%, #eee, transparent),
+                radial-gradient(2px 2px at 68% 45%, #fff, transparent),
+                radial-gradient(2px 2px at 78% 65%, #eee, transparent),
+                radial-gradient(2px 2px at 88% 85%, #fff, transparent),
+                radial-gradient(2px 2px at 2% 95%, #eee, transparent),
+                /* Étoiles scintillantes - couche 2 */
+                radial-gradient(2px 2px at 15% 20%, #fff, transparent),
+                radial-gradient(2px 2px at 25% 40%, #eee, transparent),
+                radial-gradient(2px 2px at 35% 60%, #fff, transparent),
+                radial-gradient(2px 2px at 45% 80%, #eee, transparent),
+                radial-gradient(2px 2px at 55% 10%, #fff, transparent),
+                radial-gradient(2px 2px at 65% 30%, #eee, transparent),
+                radial-gradient(2px 2px at 75% 50%, #fff, transparent),
+                radial-gradient(2px 2px at 85% 70%, #eee, transparent),
+                radial-gradient(2px 2px at 95% 90%, #fff, transparent),
+                radial-gradient(2px 2px at 5% 100%, #eee, transparent),
+                /* Étoiles scintillantes - couche 3 */
+                radial-gradient(2px 2px at 12% 8%, #fff, transparent),
+                radial-gradient(2px 2px at 22% 28%, #eee, transparent),
+                radial-gradient(2px 2px at 32% 48%, #fff, transparent),
+                radial-gradient(2px 2px at 42% 68%, #eee, transparent),
+                radial-gradient(2px 2px at 52% 88%, #fff, transparent),
+                radial-gradient(2px 2px at 62% 12%, #eee, transparent),
+                radial-gradient(2px 2px at 72% 32%, #fff, transparent),
+                radial-gradient(2px 2px at 82% 52%, #eee, transparent),
+                radial-gradient(2px 2px at 92% 72%, #fff, transparent),
+                radial-gradient(2px 2px at 3% 92%, #eee, transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
         }
 
         .container {
@@ -157,8 +294,9 @@
             background: url("Lune 1.png") no-repeat center;
             background-size: contain;
             opacity: 0.6;
-            animation: floatAnimation 4s ease-in-out infinite;
+            animation: floatAnimation 4s ease-in-out infinite, spaceDrift 20s linear infinite;
             filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+            transform-style: preserve-3d;
         }
 
         .moon-bottom {
@@ -171,31 +309,15 @@
             background-size: contain;
             opacity: 0.5;
             z-index: -1;
-            animation: floatAnimation 5s ease-in-out infinite reverse;
+            animation: floatAnimation 5s ease-in-out infinite reverse, spaceDriftReverse 25s linear infinite;
             filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
-        }
-
-        /* LUNE PRINCIPALE INTERACTIVE */
-        .moon-main {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 150px;
-            height: 150px;
-            background: url("Lune 1.png") no-repeat center;
-            background-size: contain;
-            opacity: 0.9;
-            filter: drop-shadow(0 8px 25px rgba(255, 255, 255, 0.4)) contrast(1.2) brightness(1.1);
-            z-index: 5;
-            transition: transform 0.1s ease-out;
-            pointer-events: none;
+            transform-style: preserve-3d;
         }
     </style>
 </head>
 <body>
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
-    <div class="moon-main"></div>
 
     <div class="container">
         <header>
@@ -249,66 +371,6 @@
     </div>
 
     <script>
-        // Effet parallax au défilement
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-
-            // Appliquer l'effet parallax aux lunes décoratives
-            const moonTop = document.querySelector('.moon-top');
-            const moonBottom = document.querySelector('.moon-bottom');
-
-            if (moonTop) {
-                moonTop.style.transform = `translateY(${rate * 0.3}px)`;
-            }
-
-            if (moonBottom) {
-                moonBottom.style.transform = `translateY(${rate * 0.2}px)`;
-            }
-
-            // Mouvement de la lune principale (lever/coucher)
-            const moonMain = document.querySelector('.moon-main');
-            if (moonMain) {
-                const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
-                const windowHeight = window.innerHeight;
-                const windowWidth = window.innerWidth;
-
-                // Calcul de la position : de haut droite (levée) à bas gauche (couchée)
-                const startTop = 20; // Position haute
-                const endTop = windowHeight - 170; // Position basse (taille de la lune + marge)
-                const startRight = 20; // Position droite
-                const endLeft = 20; // Position gauche
-
-                const currentTop = startTop + (endTop - startTop) * scrollPercent;
-                const currentRight = startRight - (startRight - endLeft) * scrollPercent;
-
-                moonMain.style.top = currentTop + 'px';
-                moonMain.style.right = currentRight + 'px';
-
-                // Ajuster l'opacité selon la position (plus brillante quand levée)
-                const opacity = 0.7 + (0.3 * (1 - scrollPercent));
-                moonMain.style.opacity = opacity;
-            }
-
-            // Effet sur le fond étoilé
-            const body = document.body;
-            const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
-            body.style.backgroundPosition = `
-                ${scrollPercent * 100}px ${scrollPercent * 50}px,
-                ${40 + scrollPercent * 50}px ${60 + scrollPercent * 30}px,
-                ${130 + scrollPercent * 20}px ${270 + scrollPercent * 40}px,
-                ${70 + scrollPercent * 30}px ${100 + scrollPercent * 25}px,
-                ${200 + scrollPercent * 40}px ${50 + scrollPercent * 35}px,
-                ${30 + scrollPercent * 25}px ${150 + scrollPercent * 20}px,
-                ${100 + scrollPercent * 35}px ${50 + scrollPercent * 45}px,
-                ${200 + scrollPercent * 30}px ${200 + scrollPercent * 25}px,
-                ${50 + scrollPercent * 40}px ${100 + scrollPercent * 30}px,
-                ${150 + scrollPercent * 20}px ${200 + scrollPercent * 35}px,
-                ${300 + scrollPercent * 25}px ${300 + scrollPercent * 40}px,
-                ${100 + scrollPercent * 30}px ${250 + scrollPercent * 20}px
-            `;
-        });
-
         // Animation d'entrée des éléments
         const observerOptions = {
             threshold: 0.1,
