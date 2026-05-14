@@ -174,11 +174,28 @@
             animation: floatAnimation 5s ease-in-out infinite reverse;
             filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
         }
+
+        /* LUNE PRINCIPALE INTERACTIVE */
+        .moon-main {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: 150px;
+            background: url("Lune 1.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.9;
+            filter: drop-shadow(0 8px 25px rgba(255, 255, 255, 0.4)) contrast(1.2) brightness(1.1);
+            z-index: 5;
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
+    <div class="moon-main"></div>
 
     <div class="container">
         <header>
@@ -230,6 +247,91 @@
             &copy; 2026 - Documentation réalisée par Mathis
         </footer>
     </div>
+
+    <script>
+        // Effet parallax au défilement
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+
+            // Appliquer l'effet parallax aux lunes décoratives
+            const moonTop = document.querySelector('.moon-top');
+            const moonBottom = document.querySelector('.moon-bottom');
+
+            if (moonTop) {
+                moonTop.style.transform = `translateY(${rate * 0.3}px)`;
+            }
+
+            if (moonBottom) {
+                moonBottom.style.transform = `translateY(${rate * 0.2}px)`;
+            }
+
+            // Mouvement de la lune principale (lever/coucher)
+            const moonMain = document.querySelector('.moon-main');
+            if (moonMain) {
+                const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
+                const windowHeight = window.innerHeight;
+                const windowWidth = window.innerWidth;
+
+                // Calcul de la position : de haut droite (levée) à bas gauche (couchée)
+                const startTop = 20; // Position haute
+                const endTop = windowHeight - 170; // Position basse (taille de la lune + marge)
+                const startRight = 20; // Position droite
+                const endLeft = 20; // Position gauche
+
+                const currentTop = startTop + (endTop - startTop) * scrollPercent;
+                const currentRight = startRight - (startRight - endLeft) * scrollPercent;
+
+                moonMain.style.top = currentTop + 'px';
+                moonMain.style.right = currentRight + 'px';
+
+                // Ajuster l'opacité selon la position (plus brillante quand levée)
+                const opacity = 0.7 + (0.3 * (1 - scrollPercent));
+                moonMain.style.opacity = opacity;
+            }
+
+            // Effet sur le fond étoilé
+            const body = document.body;
+            const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
+            body.style.backgroundPosition = `
+                ${scrollPercent * 100}px ${scrollPercent * 50}px,
+                ${40 + scrollPercent * 50}px ${60 + scrollPercent * 30}px,
+                ${130 + scrollPercent * 20}px ${270 + scrollPercent * 40}px,
+                ${70 + scrollPercent * 30}px ${100 + scrollPercent * 25}px,
+                ${200 + scrollPercent * 40}px ${50 + scrollPercent * 35}px,
+                ${30 + scrollPercent * 25}px ${150 + scrollPercent * 20}px,
+                ${100 + scrollPercent * 35}px ${50 + scrollPercent * 45}px,
+                ${200 + scrollPercent * 30}px ${200 + scrollPercent * 25}px,
+                ${50 + scrollPercent * 40}px ${100 + scrollPercent * 30}px,
+                ${150 + scrollPercent * 20}px ${200 + scrollPercent * 35}px,
+                ${300 + scrollPercent * 25}px ${300 + scrollPercent * 40}px,
+                ${100 + scrollPercent * 30}px ${250 + scrollPercent * 20}px
+            `;
+        });
+
+        // Animation d'entrée des éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments avec animation
+        document.querySelectorAll('.doc-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 
 </body>
 </html>

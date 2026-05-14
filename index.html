@@ -52,14 +52,55 @@
             }
         }
 
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
         body {
             background-color: var(--bg-color);
+            background-image:
+                /* Étoiles fixes */
+                radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+                radial-gradient(1px 1px at 20% 40%, #eee, transparent),
+                radial-gradient(1px 1px at 30% 60%, #fff, transparent),
+                radial-gradient(1px 1px at 40% 80%, #eee, transparent),
+                radial-gradient(1px 1px at 50% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 60% 30%, #eee, transparent),
+                radial-gradient(1px 1px at 70% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 70%, #eee, transparent),
+                radial-gradient(1px 1px at 90% 90%, #fff, transparent),
+                radial-gradient(1px 1px at 15% 85%, #eee, transparent),
+                radial-gradient(1px 1px at 25% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 35% 35%, #eee, transparent),
+                radial-gradient(1px 1px at 45% 55%, #fff, transparent),
+                radial-gradient(1px 1px at 55% 75%, #eee, transparent),
+                radial-gradient(1px 1px at 65% 5%, #fff, transparent),
+                radial-gradient(1px 1px at 75% 25%, #eee, transparent),
+                radial-gradient(1px 1px at 85% 45%, #fff, transparent),
+                radial-gradient(1px 1px at 5% 65%, #eee, transparent),
+                radial-gradient(1px 1px at 95% 85%, #fff, transparent),
+                radial-gradient(1px 1px at 12% 95%, #eee, transparent),
+                /* Étoiles scintillantes */
+                radial-gradient(2px 2px at 8% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 18% 35%, #eee, transparent),
+                radial-gradient(2px 2px at 28% 55%, #fff, transparent),
+                radial-gradient(2px 2px at 38% 75%, #eee, transparent),
+                radial-gradient(2px 2px at 48% 5%, #fff, transparent),
+                radial-gradient(2px 2px at 58% 25%, #eee, transparent),
+                radial-gradient(2px 2px at 68% 45%, #fff, transparent),
+                radial-gradient(2px 2px at 78% 65%, #eee, transparent),
+                radial-gradient(2px 2px at 88% 85%, #fff, transparent),
+                radial-gradient(2px 2px at 2% 95%, #eee, transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* LUNE EN HAUT A DROITE */
@@ -71,9 +112,10 @@
             height: 120px;
             background: url("Lune 1.png") no-repeat center;
             background-size: contain;
-            opacity: 0.85;
-            animation: floatAnimation 4s ease-in-out infinite;
-            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+            opacity: 1;
+            animation: floatAnimation 4s ease-in-out infinite, parallaxTop 1s ease-out forwards;
+            filter: drop-shadow(0 4px 20px rgba(200, 180, 255, 0.3)) contrast(1.1) brightness(1.05);
+            z-index: 10;
         }
 
         /* LUNE EN BAS A GAUCHE */
@@ -85,10 +127,26 @@
             height: 100px;
             background: url("Lune 2.png") no-repeat center;
             background-size: contain;
-            opacity: 0.6;
-            z-index: -1;
-            animation: floatAnimation 5s ease-in-out infinite reverse;
-            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+            opacity: 0.85;
+            z-index: 9;
+            animation: floatAnimation 5s ease-in-out infinite reverse, parallaxBottom 1.5s ease-out forwards;
+            filter: drop-shadow(0 4px 20px rgba(100, 150, 255, 0.25)) contrast(1.1) brightness(1.08);
+        }
+
+        /* LUNE PRINCIPALE INTERACTIVE */
+        .moon-main {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: 150px;
+            background: url("Lune 1.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.9;
+            filter: drop-shadow(0 8px 25px rgba(255, 255, 255, 0.4)) contrast(1.2) brightness(1.1);
+            z-index: 5;
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
         }
 
         /* ETOILES DE SEPARATION */
@@ -285,6 +343,24 @@
             animation: fadeInDown 1.2s ease-out;
         }
 
+        @keyframes parallaxTop {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes parallaxBottom {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 3.5rem; }
             .about-box { padding: 30px; }
@@ -295,6 +371,7 @@
 
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
+    <div class="moon-main"></div>
 
     <header>
         <h1>Mathis Gil</h1>
@@ -348,6 +425,91 @@
     <footer>
         &copy; 2026 - Design Lunaire par Mathis
     </footer>
+
+    <script>
+        // Effet parallax au défilement
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+
+            // Appliquer l'effet parallax aux lunes décoratives
+            const moonTop = document.querySelector('.moon-top');
+            const moonBottom = document.querySelector('.moon-bottom');
+
+            if (moonTop) {
+                moonTop.style.transform = `translateY(${rate * 0.3}px)`;
+            }
+
+            if (moonBottom) {
+                moonBottom.style.transform = `translateY(${rate * 0.2}px)`;
+            }
+
+            // Mouvement de la lune principale (lever/coucher)
+            const moonMain = document.querySelector('.moon-main');
+            if (moonMain) {
+                const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
+                const windowHeight = window.innerHeight;
+                const windowWidth = window.innerWidth;
+
+                // Calcul de la position : de haut droite (levée) à bas gauche (couchée)
+                const startTop = 20; // Position haute
+                const endTop = windowHeight - 170; // Position basse (taille de la lune + marge)
+                const startRight = 20; // Position droite
+                const endLeft = 20; // Position gauche
+
+                const currentTop = startTop + (endTop - startTop) * scrollPercent;
+                const currentRight = startRight - (startRight - endLeft) * scrollPercent;
+
+                moonMain.style.top = currentTop + 'px';
+                moonMain.style.right = currentRight + 'px';
+
+                // Ajuster l'opacité selon la position (plus brillante quand levée)
+                const opacity = 0.7 + (0.3 * (1 - scrollPercent));
+                moonMain.style.opacity = opacity;
+            }
+
+            // Effet sur le fond étoilé
+            const body = document.body;
+            const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
+            body.style.backgroundPosition = `
+                ${scrollPercent * 100}px ${scrollPercent * 50}px,
+                ${40 + scrollPercent * 50}px ${60 + scrollPercent * 30}px,
+                ${130 + scrollPercent * 20}px ${270 + scrollPercent * 40}px,
+                ${70 + scrollPercent * 30}px ${100 + scrollPercent * 25}px,
+                ${200 + scrollPercent * 40}px ${50 + scrollPercent * 35}px,
+                ${30 + scrollPercent * 25}px ${150 + scrollPercent * 20}px,
+                ${100 + scrollPercent * 35}px ${50 + scrollPercent * 45}px,
+                ${200 + scrollPercent * 30}px ${200 + scrollPercent * 25}px,
+                ${50 + scrollPercent * 40}px ${100 + scrollPercent * 30}px,
+                ${150 + scrollPercent * 20}px ${200 + scrollPercent * 35}px,
+                ${300 + scrollPercent * 25}px ${300 + scrollPercent * 40}px,
+                ${100 + scrollPercent * 30}px ${250 + scrollPercent * 20}px
+            `;
+        });
+
+        // Animation d'entrée des éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments avec animation
+        document.querySelectorAll('.project-card, .about-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 
 </body>
 </html>
