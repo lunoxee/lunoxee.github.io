@@ -495,6 +495,34 @@
             opacity: 1;
         }
 
+        .music-note {
+            position: fixed;
+            top: var(--note-y);
+            right: var(--note-right);
+            color: #1ed760;
+            font-size: var(--note-size);
+            font-weight: 700;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 1;
+            text-shadow: 0 0 14px rgba(30, 215, 96, 0.58);
+            animation: musicNoteFall 1100ms ease-in forwards;
+        }
+
+        @keyframes musicNoteFall {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, -8px, 0) rotate(-12deg) scale(0.75);
+            }
+            18% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--note-drift), 120px, 0) rotate(var(--note-rotate)) scale(0.35);
+            }
+        }
+
         body.music-theme .moon-top,
         body.music-theme .moon-bottom,
         body.music-theme .scroll-moon,
@@ -693,6 +721,32 @@
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
         });
 
+        let lastMusicNoteAt = 0;
+        const musicNotes = ['♪', '♫', '♬', '♩'];
+
+        function dropMusicNote() {
+            if (!document.body.classList.contains('music-theme')) {
+                return;
+            }
+
+            const now = Date.now();
+            if (now - lastMusicNoteAt < 140) {
+                return;
+            }
+            lastMusicNoteAt = now;
+
+            const note = document.createElement('span');
+            note.className = 'music-note';
+            note.textContent = musicNotes[Math.floor(Math.random() * musicNotes.length)];
+            note.style.setProperty('--note-y', `${window.innerHeight * 0.5 + (Math.random() - 0.5) * 130}px`);
+            note.style.setProperty('--note-right', `${Math.random() * 42 + 18}px`);
+            note.style.setProperty('--note-size', `${Math.random() * 12 + 18}px`);
+            note.style.setProperty('--note-drift', `${(Math.random() - 0.5) * 90}px`);
+            note.style.setProperty('--note-rotate', `${(Math.random() - 0.5) * 80}deg`);
+            document.body.appendChild(note);
+            note.addEventListener('animationend', () => note.remove(), { once: true });
+        }
+
         document.addEventListener('click', function(event) {
             const vinylCard = event.target.closest('.about-box, .project-card, .doc-section, .cv-vinyl');
 
@@ -743,6 +797,7 @@
             const rate = scrolled * -0.5;
             const scrollMoon = document.querySelector('.scroll-moon');
             document.documentElement.style.setProperty('--side-vinyl-rotation', `${scrolled * 0.35}deg`);
+            dropMusicNote();
 
             // Appliquer l'effet parallax aux lunes décoratives
             const moonTop = document.querySelector('.moon-top');
