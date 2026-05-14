@@ -156,13 +156,12 @@
                 radial-gradient(2px 2px at 82% 52%, #eee, transparent),
                 radial-gradient(2px 2px at 92% 72%, #fff, transparent),
                 radial-gradient(2px 2px at 3% 92%, #eee, transparent);
-            background-size: 300px 300px, 350px 350px, 400px 400px, 450px 450px,
-                            500px 500px, 550px 550px, 600px 600px, 650px 650px,
-                            700px 700px, 750px 750px, 800px 800px, 850px 850px;
+            background-size: 520px 520px, 590px 590px, 660px 660px, 730px 730px,
+                            800px 800px, 870px 870px, 940px 940px, 1010px 1010px,
+                            1080px 1080px, 1150px 1150px, 1220px 1220px, 1290px 1290px;
             background-position: 0 0, 40px 60px, 130px 270px, 70px 100px,
                                  200px 50px, 30px 150px, 100px 50px, 200px 200px,
                                  50px 100px, 150px 200px, 300px 300px, 100px 250px;
-            animation: twinkle 3s ease-in-out infinite;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -782,23 +781,6 @@
                 moonBottom.style.transform = `translateY(${rate * 0.2}px)`;
             }
 
-            // Effet sur le fond étoilé
-            const body = document.body;
-            const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
-            body.style.backgroundPosition = `
-                ${scrollPercent * 100}px ${scrollPercent * 50}px,
-                ${40 + scrollPercent * 50}px ${60 + scrollPercent * 30}px,
-                ${130 + scrollPercent * 20}px ${270 + scrollPercent * 40}px,
-                ${70 + scrollPercent * 30}px ${100 + scrollPercent * 25}px,
-                ${200 + scrollPercent * 40}px ${50 + scrollPercent * 35}px,
-                ${30 + scrollPercent * 25}px ${150 + scrollPercent * 20}px,
-                ${100 + scrollPercent * 35}px ${50 + scrollPercent * 45}px,
-                ${200 + scrollPercent * 30}px ${200 + scrollPercent * 25}px,
-                ${50 + scrollPercent * 40}px ${100 + scrollPercent * 30}px,
-                ${150 + scrollPercent * 20}px ${200 + scrollPercent * 35}px,
-                ${300 + scrollPercent * 25}px ${300 + scrollPercent * 40}px,
-                ${100 + scrollPercent * 30}px ${250 + scrollPercent * 20}px
-            `;
         });
 
         // Animation d'entrée des éléments
