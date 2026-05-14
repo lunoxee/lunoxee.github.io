@@ -475,6 +475,56 @@
             h1 { font-size: 3.5rem; }
             .about-box { padding: 30px; }
         }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 2;
+            background-image:
+                radial-gradient(2px 2px at 12% 18%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 28% 72%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(3px 3px at 44% 34%, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 63% 22%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 78% 64%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(2px 2px at 91% 42%, rgba(255, 255, 255, 0.95), transparent);
+        }
+
+        body.star-flash::before {
+            animation: starFlash 650ms ease-out;
+        }
+
+        .star-dust {
+            position: fixed;
+            left: var(--dust-x);
+            top: var(--dust-y);
+            width: var(--dust-size);
+            height: var(--dust-size);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 10px rgba(230, 235, 255, 0.9), 0 0 18px rgba(255, 255, 255, 0.45);
+            animation: starDustFall var(--dust-duration) ease-in forwards;
+        }
+
+        @keyframes starFlash {
+            0% { opacity: 0; }
+            28% { opacity: 0.95; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes starDustFall {
+            0% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--dust-drift), var(--dust-fall), 0) scale(0.25);
+            }
+        }
     </style>
 </head>
 <body>
@@ -537,6 +587,27 @@
     </footer>
 
     <script>
+        // Flash d'etoiles et poussiere lumineuse au clic
+        document.addEventListener('click', function(event) {
+            document.body.classList.remove('star-flash');
+            void document.body.offsetWidth;
+            document.body.classList.add('star-flash');
+
+            for (let i = 0; i < 16; i++) {
+                const dust = document.createElement('span');
+                const size = Math.random() * 3 + 2;
+                dust.className = 'star-dust';
+                dust.style.setProperty('--dust-x', `${event.clientX + (Math.random() - 0.5) * 22}px`);
+                dust.style.setProperty('--dust-y', `${event.clientY + (Math.random() - 0.5) * 14}px`);
+                dust.style.setProperty('--dust-size', `${size}px`);
+                dust.style.setProperty('--dust-drift', `${(Math.random() - 0.5) * 90}px`);
+                dust.style.setProperty('--dust-fall', `${Math.random() * 85 + 45}px`);
+                dust.style.setProperty('--dust-duration', `${Math.random() * 500 + 650}ms`);
+                document.body.appendChild(dust);
+                dust.addEventListener('animationend', () => dust.remove(), { once: true });
+            }
+        });
+
         // Effet parallax au défilement
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
