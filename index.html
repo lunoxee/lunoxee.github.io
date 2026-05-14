@@ -761,7 +761,7 @@
         const savedTheme = localStorage.getItem('portfolio-theme');
         const themeButton = document.querySelector('.music-theme-toggle');
 
-        if (savedTheme === 'music') {
+        if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
         }
@@ -769,7 +769,7 @@
         themeButton?.addEventListener('click', function(event) {
             document.body.classList.toggle('music-theme');
             const musicEnabled = document.body.classList.contains('music-theme');
-            localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'default');
+            localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
         });
 
