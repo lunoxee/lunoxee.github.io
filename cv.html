@@ -386,6 +386,77 @@
             filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
             transform-style: preserve-3d;
         }
+        .music-theme-toggle {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            background: rgba(20, 20, 20, 0.62);
+            color: white;
+            font-size: 1.7rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .music-theme-toggle:hover {
+            transform: scale(1.08) rotate(-8deg);
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 10, 0.78);
+        }
+
+        body.music-theme {
+            --bg-color: #181818;
+            --card-bg: #262626;
+            --text-sub: #ece1c8;
+            background-color: #171717;
+        }
+
+        body.music-theme .about-box,
+        body.music-theme .project-card,
+        body.music-theme .doc-section,
+        body.music-theme .cv-vinyl {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(245, 235, 190, 0.98) 0 7%, transparent 7.5%),
+                repeating-radial-gradient(circle at 50% 50%, #121212 0 7px, #1f1f1f 8px 12px, #0b0b0b 13px 16px);
+            border-color: rgba(245, 235, 190, 0.45);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.34), inset 0 0 40px rgba(255, 255, 255, 0.04);
+        }
+
+        body.music-theme .about-box::before,
+        body.music-theme .project-card::before,
+        body.music-theme .doc-section::before,
+        body.music-theme .cv-vinyl::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border-radius: inherit;
+            background: conic-gradient(from 20deg, transparent, rgba(255, 255, 255, 0.08), transparent 18%, transparent);
+            pointer-events: none;
+        }
+
+        body.music-theme .vinyl-spin {
+            animation: vinylSpin 900ms ease-out;
+        }
+
+        @keyframes vinylSpin {
+            from { transform: rotate(0deg) scale(1); }
+            55% { transform: rotate(230deg) scale(1.03); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -399,7 +470,14 @@
                 radial-gradient(3px 3px at 44% 34%, rgba(255, 255, 255, 0.9), transparent),
                 radial-gradient(2px 2px at 63% 22%, rgba(220, 230, 255, 0.9), transparent),
                 radial-gradient(3px 3px at 78% 64%, rgba(255, 255, 255, 0.85), transparent),
-                radial-gradient(2px 2px at 91% 42%, rgba(255, 255, 255, 0.95), transparent);
+                radial-gradient(2px 2px at 91% 42%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 7% 59%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(3px 3px at 19% 86%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 36% 11%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(3px 3px at 54% 79%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 70% 9%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 86% 88%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(2px 2px at 96% 16%, rgba(255, 255, 255, 0.95), transparent);
         }
 
         body.star-flash::before {
@@ -439,6 +517,7 @@
     </style>
 </head>
 <body>
+    <button class="music-theme-toggle" type="button" aria-label="Activer le theme musique" title="Theme musique">♪</button>
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
     <div class="scroll-moon" aria-hidden="true"></div>
@@ -447,7 +526,7 @@
         <a href="index.html" class="back-link">← Retour au Portfolio</a>
     </div>
 
-    <div class="container">
+    <div class="container cv-vinyl">
         <header>
             <div class="header-text">
                 <h1>Mathis GIL</h1>
@@ -536,13 +615,40 @@
     </div>
 
     <script>
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        const themeButton = document.querySelector('.music-theme-toggle');
+
+        if (savedTheme === 'music') {
+            document.body.classList.add('music-theme');
+            themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
+        }
+
+        themeButton?.addEventListener('click', function(event) {
+            document.body.classList.toggle('music-theme');
+            const musicEnabled = document.body.classList.contains('music-theme');
+            localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'default');
+            themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
+        });
+
+        document.addEventListener('click', function(event) {
+            const vinylCard = event.target.closest('.about-box, .project-card, .doc-section, .cv-vinyl');
+
+            if (vinylCard && document.body.classList.contains('music-theme')) {
+                vinylCard.classList.remove('vinyl-spin');
+                void vinylCard.offsetWidth;
+                vinylCard.classList.add('vinyl-spin');
+            }
+        });
+
         // Flash d'etoiles et poussiere lumineuse au clic
         document.addEventListener('click', function(event) {
+            const clickedLink = event.target.closest('a[href]');
+
             document.body.classList.remove('star-flash');
             void document.body.offsetWidth;
             document.body.classList.add('star-flash');
 
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 34; i++) {
                 const dust = document.createElement('span');
                 const size = Math.random() * 3 + 2;
                 dust.className = 'star-dust';
@@ -554,6 +660,17 @@
                 dust.style.setProperty('--dust-duration', `${Math.random() * 500 + 650}ms`);
                 document.body.appendChild(dust);
                 dust.addEventListener('animationend', () => dust.remove(), { once: true });
+            }
+
+            if (clickedLink && !event.metaKey && !event.ctrlKey && !event.shiftKey && clickedLink.target !== '_blank') {
+                const href = clickedLink.getAttribute('href');
+
+                if (href && !href.startsWith('#')) {
+                    event.preventDefault();
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 180);
+                }
             }
         });
 
