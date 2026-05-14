@@ -418,6 +418,37 @@
             color: #000000;
         }
 
+        .side-vinyl {
+            position: fixed;
+            top: 50%;
+            right: clamp(-180px, -12vw, -95px);
+            width: clamp(260px, 32vw, 430px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
+            background:
+                radial-gradient(circle at center, #1ed760 0 6%, #000 6.5% 10%, #1db954 10.5% 12%, transparent 12.5%),
+                repeating-radial-gradient(circle at center, #030303 0 8px, #111 9px 13px, #050505 14px 18px);
+            box-shadow: 0 0 45px rgba(29, 185, 84, 0.22), inset 0 0 42px rgba(255, 255, 255, 0.04);
+            transform: translateY(-50%) rotate(var(--side-vinyl-rotation, 0deg));
+            transition: opacity 0.25s ease;
+            will-change: transform;
+        }
+
+        .side-vinyl::before {
+            content: "";
+            position: absolute;
+            inset: 8%;
+            border-radius: inherit;
+            background: conic-gradient(from 30deg, transparent, rgba(255,255,255,0.09), transparent 16%, transparent 42%, rgba(255,255,255,0.06), transparent 58%);
+        }
+
+        body.music-theme .side-vinyl {
+            opacity: 1;
+        }
+
         body.music-theme .moon-top,
         body.music-theme .moon-bottom,
         body.music-theme .scroll-moon,
@@ -506,6 +537,7 @@
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
     <div class="scroll-moon" aria-hidden="true"></div>
+    <div class="side-vinyl" aria-hidden="true"></div>
 
     <div class="container">
         <header>
@@ -622,6 +654,7 @@
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const scrollMoon = document.querySelector('.scroll-moon');
+            document.documentElement.style.setProperty('--side-vinyl-rotation', `${scrolled * 0.35}deg`);
 
             if (scrollMoon) {
                 scrollMoon.style.setProperty('--moon-x', `${Math.min(scrolled * 0.08, 130)}px`);
