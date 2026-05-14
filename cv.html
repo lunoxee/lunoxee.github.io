@@ -416,11 +416,12 @@
 
         body.music-theme {
             --bg-color: #121212;
-            --card-bg: #181818;
+            --card-bg: #000000;
             --text-sub: #b3b3b3;
-            background-color: #121212;
-            background-image: none;
-            animation: none;
+            background: #121212 !important;
+            background-image: none !important;
+            animation: none !important;
+            color: #ffffff;
         }
 
         body.music-theme .about-box,
@@ -431,10 +432,10 @@
             overflow: hidden;
             cursor: pointer;
             background:
-                radial-gradient(circle at 50% 50%, #1db954 0 8%, #121212 8.5% 12%, transparent 12.5%),
-                repeating-radial-gradient(circle at 50% 50%, #050505 0 7px, #171717 8px 12px, #0b0b0b 13px 16px);
-            border-color: rgba(29, 185, 84, 0.75);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42), 0 0 24px rgba(29, 185, 84, 0.12);
+                radial-gradient(circle at 50% 50%, #1ed760 0 8%, #000000 8.5% 12%, transparent 12.5%),
+                repeating-radial-gradient(circle at 50% 50%, #000000 0 7px, #101010 8px 12px, #050505 13px 16px);
+            border-color: rgba(30, 215, 96, 0.85);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), 0 0 28px rgba(29, 185, 84, 0.22);
         }
 
         body.music-theme .about-box::before,
@@ -461,7 +462,7 @@
         body.music-theme .music-theme-toggle {
             background: #1db954;
             border-color: #1ed760;
-            color: #121212;
+            color: #000000;
         }
 
         body.music-theme .moon-top,
@@ -475,6 +476,7 @@
 
         body.music-theme::before {
             display: none;
+            content: none;
         }
 
         body.music-theme .vinyl-spin {
@@ -677,10 +679,6 @@
             }
 
             const clickedLink = event.target.closest('a[href]');
-
-            document.body.classList.remove('star-flash');
-            void document.body.offsetWidth;
-            document.body.classList.add('star-flash');
 
             for (let i = 0; i < 34; i++) {
                 const dust = document.createElement('span');
