@@ -413,6 +413,35 @@
             background: rgba(10, 10, 10, 0.78);
         }
 
+        .language-toggle {
+            position: fixed;
+            top: 18px;
+            left: 78px;
+            width: 52px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 24px;
+            background: rgba(20, 20, 20, 0.62);
+            color: white;
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            cursor: pointer;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .language-toggle:hover {
+            transform: scale(1.06);
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 10, 0.78);
+        }
+
         body.music-theme {
             --bg-color: #121212;
             --card-bg: #000000;
@@ -462,6 +491,12 @@
             background: #1db954;
             border-color: #1ed760;
             color: #000000;
+        }
+
+        body.music-theme .language-toggle {
+            background: #000000;
+            border-color: #1ed760;
+            color: #1ed760;
         }
 
         .side-vinyl {
@@ -608,20 +643,21 @@
 </head>
 <body>
     <button class="music-theme-toggle" type="button" aria-label="Activer le theme musique" title="Theme musique">♪</button>
+    <button class="language-toggle" type="button" aria-label="Changer la langue" title="Changer la langue">FR</button>
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
     <div class="scroll-moon" aria-hidden="true"></div>
     <div class="side-vinyl" aria-hidden="true"></div>
 
     <div class="back-nav">
-        <a href="index.html" class="back-link">← Retour au Portfolio</a>
+        <a href="index.html" class="back-link" data-i18n="common.back">← Retour au Portfolio</a>
     </div>
 
     <div class="container cv-vinyl">
         <header>
             <div class="header-text">
                 <h1>Mathis GIL</h1>
-                <p>Technicien système et réseau en alternance</p>
+                <p data-i18n="cv.subtitle">Technicien système et réseau en alternance</p>
             </div>
         </header>
 
@@ -629,32 +665,32 @@
             <!-- Colonne de gauche (Sidebar) -->
             <aside>
                 <section class="sidebar-section">
-                    <h2>Contact</h2>
+                    <h2 data-i18n="cv.contact">Contact</h2>
                     <p>📍 Marignane, 13700</p>
                     <p>📞 06 24 78 41 48</p>
                     <p>📧 gilmathis498@gmail.com</p>
-                    <p>🎂 19 ans (18/10/2006)</p>
-                    <p>🚗 Permis B</p>
+                    <p data-i18n="cv.age">🎂 19 ans (18/10/2006)</p>
+                    <p data-i18n="cv.license">🚗 Permis B</p>
                 </section>
 
                 <section class="sidebar-section">
-                    <h2>Compétences</h2>
+                    <h2 data-i18n="cv.skills">Compétences</h2>
                     <ul>
-                        <li>Montage / Démontage PC</li>
+                        <li data-i18n="cv.skill1">Montage / Démontage PC</li>
                         <li>HTML & Python</li>
-                        <li>Maintenance de serveurs</li>
-                        <li>Paramétrage BIOS</li>
+                        <li data-i18n="cv.skill3">Maintenance de serveurs</li>
+                        <li data-i18n="cv.skill4">Paramétrage BIOS</li>
                         <li>Pack Office</li>
                     </ul>
                 </section>
 
                 <section class="sidebar-section">
-                    <h2>Savoir-être</h2>
+                    <h2 data-i18n="cv.softSkills">Savoir-être</h2>
                     <ul>
-                        <li>Polyvalent</li>
-                        <li>Ambitieux</li>
-                        <li>Organisé</li>
-                        <li>Responsable</li>
+                        <li data-i18n="cv.soft1">Polyvalent</li>
+                        <li data-i18n="cv.soft2">Ambitieux</li>
+                        <li data-i18n="cv.soft3">Organisé</li>
+                        <li data-i18n="cv.soft4">Responsable</li>
                     </ul>
                 </section>
             </aside>
@@ -662,44 +698,44 @@
             <!-- Colonne de droite (Main) -->
             <main>
                 <section>
-                    <h2>Expériences</h2>
+                    <h2 data-i18n="cv.experience">Expériences</h2>
                     <div class="experience-item">
-                        <div class="item-title">Équipier polyvalent - McDonald's</div>
-                        <div class="item-meta">Juin - Août 2023 | Marignane</div>
+                        <div class="item-title" data-i18n="cv.job1">Équipier polyvalent - McDonald's</div>
+                        <div class="item-meta" data-i18n="cv.job1Meta">Juin - Août 2023 | Marignane</div>
                         <ul>
-                            <li>Préparation des commandes</li>
-                            <li>Service à table</li>
-                            <li>Plonge et entretien</li>
+                            <li data-i18n="cv.job1Task1">Préparation des commandes</li>
+                            <li data-i18n="cv.job1Task2">Service à table</li>
+                            <li data-i18n="cv.job1Task3">Plonge et entretien</li>
                         </ul>
                     </div>
 
                     <div class="experience-item">
-                        <div class="item-title">Stage Vétérinaire</div>
+                        <div class="item-title" data-i18n="cv.job2">Stage Vétérinaire</div>
                         <div class="item-meta">Nov. 2021 | Cabinet La Gavotte</div>
                         <ul>
-                            <li>Observation d'opérations</li>
-                            <li>Entretien des salles de consultation</li>
+                            <li data-i18n="cv.job2Task1">Observation d'opérations</li>
+                            <li data-i18n="cv.job2Task2">Entretien des salles de consultation</li>
                         </ul>
                     </div>
                 </section>
 
                 <section style="margin-top: 40px;">
-                    <h2>Formations</h2>
+                    <h2 data-i18n="cv.education">Formations</h2>
                     <div class="formation-item">
-                        <div class="item-title">BTS SIO (Services Informatiques aux Organisations)</div>
+                        <div class="item-title" data-i18n="cv.degree1">BTS SIO (Services Informatiques aux Organisations)</div>
                         <div class="item-meta">2025 - 2027 | M2S Formation, Vitrolles</div>
                     </div>
                     <div class="formation-item">
-                        <div class="item-title">Baccalauréat Général</div>
+                        <div class="item-title" data-i18n="cv.degree2">Baccalauréat Général</div>
                         <div class="item-meta">2022 - 2025 | Lycée Maurice Genevoix</div>
                     </div>
                 </section>
 
                 <section style="margin-top: 40px;">
-                    <h2>Intérêts</h2>
-                    <p>🎹 <strong>Piano :</strong> 4-5 ans en autodidacte</p>
+                    <h2 data-i18n="cv.interests">Intérêts</h2>
+                    <p data-i18n="cv.interest1">🎹 <strong>Piano :</strong> 4-5 ans en autodidacte</p>
                     <p>🏀 <strong>Basket</strong></p>
-                    <p>💻 <strong>Informatique :</strong> Optimisation système</p>
+                    <p data-i18n="cv.interest3">💻 <strong>Informatique :</strong> Optimisation système</p>
                 </section>
             </main>
         </div>
@@ -708,6 +744,97 @@
     <script>
         const savedTheme = localStorage.getItem('portfolio-theme');
         const themeButton = document.querySelector('.music-theme-toggle');
+        const languageButton = document.querySelector('.language-toggle');
+        const translations = {
+            fr: {
+                title: 'CV | Mathis GIL',
+                'common.back': '← Retour au Portfolio',
+                'cv.subtitle': 'Technicien système et réseau en alternance',
+                'cv.contact': 'Contact',
+                'cv.age': '🎂 19 ans (18/10/2006)',
+                'cv.license': '🚗 Permis B',
+                'cv.skills': 'Compétences',
+                'cv.skill1': 'Montage / Démontage PC',
+                'cv.skill3': 'Maintenance de serveurs',
+                'cv.skill4': 'Paramétrage BIOS',
+                'cv.softSkills': 'Savoir-être',
+                'cv.soft1': 'Polyvalent',
+                'cv.soft2': 'Ambitieux',
+                'cv.soft3': 'Organisé',
+                'cv.soft4': 'Responsable',
+                'cv.experience': 'Expériences',
+                'cv.job1': "Équipier polyvalent - McDonald's",
+                'cv.job1Meta': 'Juin - Août 2023 | Marignane',
+                'cv.job1Task1': 'Préparation des commandes',
+                'cv.job1Task2': 'Service à table',
+                'cv.job1Task3': 'Plonge et entretien',
+                'cv.job2': 'Stage Vétérinaire',
+                'cv.job2Task1': "Observation d'opérations",
+                'cv.job2Task2': 'Entretien des salles de consultation',
+                'cv.education': 'Formations',
+                'cv.degree1': 'BTS SIO (Services Informatiques aux Organisations)',
+                'cv.degree2': 'Baccalauréat Général',
+                'cv.interests': 'Intérêts',
+                'cv.interest1': '🎹 <strong>Piano :</strong> 4-5 ans en autodidacte',
+                'cv.interest3': '💻 <strong>Informatique :</strong> Optimisation système'
+            },
+            en: {
+                title: 'Resume | Mathis GIL',
+                'common.back': '← Back to Portfolio',
+                'cv.subtitle': 'Work-study systems and network technician',
+                'cv.contact': 'Contact',
+                'cv.age': '🎂 19 years old (10/18/2006)',
+                'cv.license': '🚗 Driving license',
+                'cv.skills': 'Skills',
+                'cv.skill1': 'PC assembly / disassembly',
+                'cv.skill3': 'Server maintenance',
+                'cv.skill4': 'BIOS configuration',
+                'cv.softSkills': 'Soft Skills',
+                'cv.soft1': 'Versatile',
+                'cv.soft2': 'Ambitious',
+                'cv.soft3': 'Organized',
+                'cv.soft4': 'Responsible',
+                'cv.experience': 'Experience',
+                'cv.job1': "Crew member - McDonald's",
+                'cv.job1Meta': 'June - August 2023 | Marignane',
+                'cv.job1Task1': 'Order preparation',
+                'cv.job1Task2': 'Table service',
+                'cv.job1Task3': 'Dishwashing and cleaning',
+                'cv.job2': 'Veterinary Internship',
+                'cv.job2Task1': 'Observed surgical procedures',
+                'cv.job2Task2': 'Maintained consultation rooms',
+                'cv.education': 'Education',
+                'cv.degree1': 'BTS SIO (IT Services for Organizations)',
+                'cv.degree2': 'General Baccalaureate',
+                'cv.interests': 'Interests',
+                'cv.interest1': '🎹 <strong>Piano:</strong> 4-5 years self-taught',
+                'cv.interest3': '💻 <strong>IT:</strong> System optimization'
+            }
+        };
+
+        function applyLanguage(language) {
+            const dictionary = translations[language] || translations.fr;
+            document.documentElement.lang = language;
+            document.title = dictionary.title;
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.dataset.i18n;
+                if (dictionary[key]) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+            languageButton.textContent = language.toUpperCase();
+            languageButton.setAttribute('aria-label', language === 'fr' ? 'Changer la langue en anglais' : 'Switch language to French');
+            languageButton.setAttribute('title', language === 'fr' ? 'Passer en anglais' : 'Switch to French');
+        }
+
+        let currentLanguage = localStorage.getItem('portfolio-lang') || 'fr';
+        applyLanguage(currentLanguage);
+
+        languageButton?.addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('portfolio-lang', currentLanguage);
+            applyLanguage(currentLanguage);
+        });
 
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');

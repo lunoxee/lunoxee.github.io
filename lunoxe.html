@@ -367,6 +367,35 @@
             background: rgba(10, 10, 10, 0.78);
         }
 
+        .language-toggle {
+            position: fixed;
+            top: 18px;
+            left: 78px;
+            width: 52px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 24px;
+            background: rgba(20, 20, 20, 0.62);
+            color: white;
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            cursor: pointer;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .language-toggle:hover {
+            transform: scale(1.06);
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 10, 0.78);
+        }
+
         body.music-theme {
             --bg-color: #121212;
             --card-bg: #000000;
@@ -416,6 +445,12 @@
             background: #1db954;
             border-color: #1ed760;
             color: #000000;
+        }
+
+        body.music-theme .language-toggle {
+            background: #000000;
+            border-color: #1ed760;
+            color: #1ed760;
         }
 
         .side-vinyl {
@@ -562,6 +597,7 @@
 </head>
 <body>
     <button class="music-theme-toggle" type="button" aria-label="Activer le theme musique" title="Theme musique">♪</button>
+    <button class="language-toggle" type="button" aria-label="Changer la langue" title="Changer la langue">FR</button>
     <div class="moon-top"></div>
     <div class="moon-bottom"></div>
     <div class="scroll-moon" aria-hidden="true"></div>
@@ -569,58 +605,137 @@
 
     <div class="container">
         <header>
-            <a href="index.html" class="back-link">← Retour au Portfolio</a>
-            <h1>Projet Lunoxe</h1>
-            <p style="color: var(--text-sub);">Documentation Technique : Capture et Gestion des Logs</p>
+            <a href="index.html" class="back-link" data-i18n="common.back">← Retour au Portfolio</a>
+            <h1 data-i18n="lunoxe.title">Projet Lunoxe</h1>
+            <p style="color: var(--text-sub);" data-i18n="lunoxe.subtitle">Documentation Technique : Capture et Gestion des Logs</p>
         </header>
 
         <section class="doc-section">
-            <h2>Besoin du projet</h2>
-            <p>L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].</p>
-            <p>Les informations à tracer impérativement sont :</p>
+            <h2 data-i18n="lunoxe.needTitle">Besoin du projet</h2>
+            <p data-i18n="lunoxe.needText">L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].</p>
+            <p data-i18n="lunoxe.traceIntro">Les informations à tracer impérativement sont :</p>
             <ul>
-                <li>Date et heure de la connexion [cite: 15]</li>
-                <li>MAC source et destination [cite: 16, 17]</li>
-                <li>IP source et destination [cite: 18, 20]</li>
-                <li>Ports source et destination [cite: 19, 21]</li>
+                <li data-i18n="lunoxe.trace1">Date et heure de la connexion [cite: 15]</li>
+                <li data-i18n="lunoxe.trace2">MAC source et destination [cite: 16, 17]</li>
+                <li data-i18n="lunoxe.trace3">IP source et destination [cite: 18, 20]</li>
+                <li data-i18n="lunoxe.trace4">Ports source et destination [cite: 19, 21]</li>
             </ul>
         </section>
 
         <div class="stars">✦ ✶ ✦</div>
 
         <section class="doc-section">
-            <h2>Recherche et Solution</h2>
-            <p>Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l'utilisateur[cite: 24, 27, 30].</p>
-            <h3>Optimisations :</h3>
-            <p>Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].</p>
+            <h2 data-i18n="lunoxe.researchTitle">Recherche et Solution</h2>
+            <p data-i18n="lunoxe.researchText">Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l'utilisateur[cite: 24, 27, 30].</p>
+            <h3 data-i18n="lunoxe.optimTitle">Optimisations :</h3>
+            <p data-i18n="lunoxe.optimText">Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].</p>
         </section>
 
         <section class="doc-section">
-            <h2>Sécurité de l'Infrastructure</h2>
-            <p>Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:</p>
+            <h2 data-i18n="lunoxe.securityTitle">Sécurité de l'Infrastructure</h2>
+            <p data-i18n="lunoxe.securityText">Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:</p>
             <ul>
-                <li>Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].</li>
-                <li>Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].</li>
-                <li>Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion[cite: 58].</li>
-                <li>Limitation des connexions simultanées et restriction des privilèges[cite: 57].</li>
+                <li data-i18n="lunoxe.security1">Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].</li>
+                <li data-i18n="lunoxe.security2">Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].</li>
+                <li data-i18n="lunoxe.security3">Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion[cite: 58].</li>
+                <li data-i18n="lunoxe.security4">Limitation des connexions simultanées et restriction des privilèges[cite: 57].</li>
             </ul>
         </section>
 
         <div class="stars">✶ ✦ ✶</div>
 
         <section class="doc-section">
-            <h2>Résultats</h2>
-            <p>Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].</p>
+            <h2 data-i18n="lunoxe.resultsTitle">Résultats</h2>
+            <p data-i18n="lunoxe.resultsText">Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].</p>
         </section>
 
         <footer>
-            &copy; 2026 - Documentation réalisée par Mathis
+            <span data-i18n="lunoxe.footer">&copy; 2026 - Documentation réalisée par Mathis</span>
         </footer>
     </div>
 
     <script>
         const savedTheme = localStorage.getItem('portfolio-theme');
         const themeButton = document.querySelector('.music-theme-toggle');
+        const languageButton = document.querySelector('.language-toggle');
+        const translations = {
+            fr: {
+                title: 'Projet Lunoxe | Documentation',
+                'lunoxe.title': 'Projet Lunoxe',
+                'common.back': '← Retour au Portfolio',
+                'lunoxe.subtitle': 'Documentation Technique : Capture et Gestion des Logs',
+                'lunoxe.needTitle': 'Besoin du projet',
+                'lunoxe.needText': 'L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].',
+                'lunoxe.traceIntro': 'Les informations à tracer impérativement sont :',
+                'lunoxe.trace1': 'Date et heure de la connexion [cite: 15]',
+                'lunoxe.trace2': 'MAC source et destination [cite: 16, 17]',
+                'lunoxe.trace3': 'IP source et destination [cite: 18, 20]',
+                'lunoxe.trace4': 'Ports source et destination [cite: 19, 21]',
+                'lunoxe.researchTitle': 'Recherche et Solution',
+                'lunoxe.researchText': 'Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l’utilisateur[cite: 24, 27, 30].',
+                'lunoxe.optimTitle': 'Optimisations :',
+                'lunoxe.optimText': "Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].",
+                'lunoxe.securityTitle': "Sécurité de l'Infrastructure",
+                'lunoxe.securityText': 'Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:',
+                'lunoxe.security1': "Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].",
+                'lunoxe.security2': 'Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].',
+                'lunoxe.security3': 'Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d’intrusion[cite: 58].',
+                'lunoxe.security4': 'Limitation des connexions simultanées et restriction des privilèges[cite: 57].',
+                'lunoxe.resultsTitle': 'Résultats',
+                'lunoxe.resultsText': "Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].",
+                'lunoxe.footer': '&copy; 2026 - Documentation réalisée par Mathis'
+            },
+            en: {
+                title: 'Lunoxe Project | Documentation',
+                'lunoxe.title': 'Lunoxe Project',
+                'common.back': '← Back to Portfolio',
+                'lunoxe.subtitle': 'Technical Documentation: Log Capture and Management',
+                'lunoxe.needTitle': 'Project Need',
+                'lunoxe.needText': 'The company provides public Wi-Fi access. According to the <span class="highlight">CNIL</span>, any company offering this type of network must keep connection logs for <strong>one year</strong> to identify the source of possible fraudulent use[cite: 12, 13].',
+                'lunoxe.traceIntro': 'The required information to track is:',
+                'lunoxe.trace1': 'Connection date and time [cite: 15]',
+                'lunoxe.trace2': 'Source and destination MAC addresses [cite: 16, 17]',
+                'lunoxe.trace3': 'Source and destination IP addresses [cite: 18, 20]',
+                'lunoxe.trace4': 'Source and destination ports [cite: 19, 21]',
+                'lunoxe.researchTitle': 'Research and Solution',
+                'lunoxe.researchText': 'After studying solutions such as captive portals and Squid, we chose <span class="highlight">tcpdump</span> for its ability to capture packets from the command line without user action[cite: 24, 27, 30].',
+                'lunoxe.optimTitle': 'Optimizations:',
+                'lunoxe.optimText': 'The script was developed in <strong>Python</strong> to make future use through a web interface easier[cite: 43]. Files are automatically compressed to save NAS storage space[cite: 45, 46].',
+                'lunoxe.securityTitle': 'Infrastructure Security',
+                'lunoxe.securityText': 'To secure the Raspberry Pi, several critical measures were applied[cite: 53, 54]:',
+                'lunoxe.security1': 'Password authentication disabled (private SSH keys only)[cite: 55].',
+                'lunoxe.security2': 'Default SSH port changed to <span class="highlight">port 2222</span>[cite: 56].',
+                'lunoxe.security3': '<span class="highlight">Fail2Ban</span> installed to block intrusion attempts[cite: 58].',
+                'lunoxe.security4': 'Simultaneous connections limited and privileges restricted[cite: 57].',
+                'lunoxe.resultsTitle': 'Results',
+                'lunoxe.resultsText': 'The system automatically sends logs every <strong>10 minutes</strong> to a shared folder on the NAS in Excel format[cite: 59, 63]. No data is stored locally on the Raspberry Pi, improving resilience[cite: 64, 65].',
+                'lunoxe.footer': '&copy; 2026 - Documentation by Mathis'
+            }
+        };
+
+        function applyLanguage(language) {
+            const dictionary = translations[language] || translations.fr;
+            document.documentElement.lang = language;
+            document.title = dictionary.title;
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.dataset.i18n;
+                if (dictionary[key]) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+            languageButton.textContent = language.toUpperCase();
+            languageButton.setAttribute('aria-label', language === 'fr' ? 'Changer la langue en anglais' : 'Switch language to French');
+            languageButton.setAttribute('title', language === 'fr' ? 'Passer en anglais' : 'Switch to French');
+        }
+
+        let currentLanguage = localStorage.getItem('portfolio-lang') || 'fr';
+        applyLanguage(currentLanguage);
+
+        languageButton?.addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('portfolio-lang', currentLanguage);
+            applyLanguage(currentLanguage);
+        });
 
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
