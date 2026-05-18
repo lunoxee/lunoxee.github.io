@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Lunoxe | Documentation</title>
+    <title>Logs | Documentation</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -606,19 +606,19 @@
     <div class="container">
         <header>
             <a href="index.html" class="back-link" data-i18n="common.back">← Retour au Portfolio</a>
-            <h1 data-i18n="lunoxe.title">Projet Lunoxe</h1>
+            <h1 data-i18n="lunoxe.title">Logs</h1>
             <p style="color: var(--text-sub);" data-i18n="lunoxe.subtitle">Documentation Technique : Capture et Gestion des Logs</p>
         </header>
 
         <section class="doc-section">
             <h2 data-i18n="lunoxe.needTitle">Besoin du projet</h2>
-            <p data-i18n="lunoxe.needText">L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].</p>
+            <p data-i18n="lunoxe.needText">L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux.</p>
             <p data-i18n="lunoxe.traceIntro">Les informations à tracer impérativement sont :</p>
             <ul>
-                <li data-i18n="lunoxe.trace1">Date et heure de la connexion [cite: 15]</li>
-                <li data-i18n="lunoxe.trace2">MAC source et destination [cite: 16, 17]</li>
-                <li data-i18n="lunoxe.trace3">IP source et destination [cite: 18, 20]</li>
-                <li data-i18n="lunoxe.trace4">Ports source et destination [cite: 19, 21]</li>
+                <li data-i18n="lunoxe.trace1">Date et heure de la connexion</li>
+                <li data-i18n="lunoxe.trace2">MAC source et destination</li>
+                <li data-i18n="lunoxe.trace3">IP source et destination</li>
+                <li data-i18n="lunoxe.trace4">Ports source et destination</li>
             </ul>
         </section>
 
@@ -626,16 +626,16 @@
 
         <section class="doc-section">
             <h2 data-i18n="lunoxe.researchTitle">Recherche et Solution</h2>
-            <p data-i18n="lunoxe.researchText">Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l'utilisateur[cite: 24, 27, 30].</p>
+            <p data-i18n="lunoxe.researchText">Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l'utilisateur.</p>
             <h3 data-i18n="lunoxe.optimTitle">Optimisations :</h3>
-            <p data-i18n="lunoxe.optimText">Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].</p>
+            <p data-i18n="lunoxe.optimText">Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS.</p>
         </section>
 
         <section class="doc-section">
             <h2 data-i18n="lunoxe.securityTitle">Sécurité de l'Infrastructure</h2>
-            <p data-i18n="lunoxe.securityText">Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:</p>
+            <p data-i18n="lunoxe.securityText">Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées:</p>
             <ul>
-                <li data-i18n="lunoxe.security1">Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].</li>
+                <li data-i18n="lunoxe.security1">Désactivation de l'authentification par mot de passe (clés SSH privées uniquement).</li>
                 <li data-i18n="lunoxe.security2">Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].</li>
                 <li data-i18n="lunoxe.security3">Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion[cite: 58].</li>
                 <li data-i18n="lunoxe.security4">Limitation des connexions simultanées et restriction des privilèges[cite: 57].</li>
@@ -737,9 +737,13 @@
             applyLanguage(currentLanguage);
         });
 
+        // Initial theme and button icon (show the icon of the other theme to switch to)
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
+            if (themeButton) themeButton.textContent = '🌙';
+        } else {
+            if (themeButton) themeButton.textContent = '♪';
         }
 
         themeButton?.addEventListener('click', function(event) {
@@ -747,6 +751,7 @@
             const musicEnabled = document.body.classList.contains('music-theme');
             localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
+            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
         });
 
         let lastMusicNoteAt = 0;

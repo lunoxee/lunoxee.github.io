@@ -1,1 +1,1024 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Mathis GIL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #3d3d3d;
+            --card-bg: #555555;
+            --text-main: #ffffff;
+            --text-sub: #d1d1d1;
+            --accent: #9ca3af;
+        }
 
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes parallaxTop {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes parallaxBottom {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes spaceDrift {
+            0% {
+                transform: translateX(0px) translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateX(5px) translateY(-3px) rotate(2deg);
+            }
+            50% {
+                transform: translateX(0px) translateY(-5px) rotate(0deg);
+            }
+            75% {
+                transform: translateX(-5px) translateY(-2px) rotate(-2deg);
+            }
+            100% {
+                transform: translateX(0px) translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes spaceDriftReverse {
+            0% {
+                transform: translateX(0px) translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateX(-3px) translateY(4px) rotate(-1.5deg);
+            }
+            50% {
+                transform: translateX(0px) translateY(6px) rotate(0deg);
+            }
+            75% {
+                transform: translateX(3px) translateY(3px) rotate(1.5deg);
+            }
+            100% {
+                transform: translateX(0px) translateY(0px) rotate(0deg);
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                /* Étoiles fixes - couche 1 */
+                radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+                radial-gradient(1px 1px at 20% 40%, #eee, transparent),
+                radial-gradient(1px 1px at 30% 60%, #fff, transparent),
+                radial-gradient(1px 1px at 40% 80%, #eee, transparent),
+                radial-gradient(1px 1px at 50% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 60% 30%, #eee, transparent),
+                radial-gradient(1px 1px at 70% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 70%, #eee, transparent),
+                radial-gradient(1px 1px at 90% 90%, #fff, transparent),
+                radial-gradient(1px 1px at 15% 85%, #eee, transparent),
+                radial-gradient(1px 1px at 25% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 35% 35%, #eee, transparent),
+                radial-gradient(1px 1px at 45% 55%, #fff, transparent),
+                radial-gradient(1px 1px at 55% 75%, #eee, transparent),
+                radial-gradient(1px 1px at 65% 5%, #fff, transparent),
+                radial-gradient(1px 1px at 75% 25%, #eee, transparent),
+                radial-gradient(1px 1px at 85% 45%, #fff, transparent),
+                radial-gradient(1px 1px at 5% 65%, #eee, transparent),
+                radial-gradient(1px 1px at 95% 85%, #fff, transparent),
+                radial-gradient(1px 1px at 12% 95%, #eee, transparent),
+                /* Étoiles fixes - couche 2 */
+                radial-gradient(1px 1px at 3% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 13% 50%, #eee, transparent),
+                radial-gradient(1px 1px at 23% 70%, #fff, transparent),
+                radial-gradient(1px 1px at 33% 90%, #eee, transparent),
+                radial-gradient(1px 1px at 43% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 53% 35%, #eee, transparent),
+                radial-gradient(1px 1px at 63% 55%, #fff, transparent),
+                radial-gradient(1px 1px at 73% 75%, #eee, transparent),
+                radial-gradient(1px 1px at 83% 95%, #fff, transparent),
+                radial-gradient(1px 1px at 93% 5%, #eee, transparent),
+                radial-gradient(1px 1px at 7% 25%, #fff, transparent),
+                radial-gradient(1px 1px at 17% 45%, #eee, transparent),
+                radial-gradient(1px 1px at 27% 65%, #fff, transparent),
+                radial-gradient(1px 1px at 37% 85%, #eee, transparent),
+                radial-gradient(1px 1px at 47% 8%, #fff, transparent),
+                radial-gradient(1px 1px at 57% 28%, #eee, transparent),
+                radial-gradient(1px 1px at 67% 48%, #fff, transparent),
+                radial-gradient(1px 1px at 77% 68%, #eee, transparent),
+                radial-gradient(1px 1px at 87% 88%, #fff, transparent),
+                radial-gradient(1px 1px at 97% 12%, #eee, transparent),
+                /* Étoiles fixes - couche 3 */
+                radial-gradient(1px 1px at 6% 18%, #fff, transparent),
+                radial-gradient(1px 1px at 16% 38%, #eee, transparent),
+                radial-gradient(1px 1px at 26% 58%, #fff, transparent),
+                radial-gradient(1px 1px at 36% 78%, #eee, transparent),
+                radial-gradient(1px 1px at 46% 98%, #fff, transparent),
+                radial-gradient(1px 1px at 56% 22%, #eee, transparent),
+                radial-gradient(1px 1px at 66% 42%, #fff, transparent),
+                radial-gradient(1px 1px at 76% 62%, #eee, transparent),
+                radial-gradient(1px 1px at 86% 82%, #fff, transparent),
+                radial-gradient(1px 1px at 96% 6%, #eee, transparent),
+                radial-gradient(1px 1px at 2% 26%, #fff, transparent),
+                radial-gradient(1px 1px at 12% 46%, #eee, transparent),
+                radial-gradient(1px 1px at 22% 66%, #fff, transparent),
+                radial-gradient(1px 1px at 32% 86%, #eee, transparent),
+                radial-gradient(1px 1px at 42% 14%, #fff, transparent),
+                radial-gradient(1px 1px at 52% 34%, #eee, transparent),
+                radial-gradient(1px 1px at 62% 54%, #fff, transparent),
+                radial-gradient(1px 1px at 72% 74%, #eee, transparent),
+                radial-gradient(1px 1px at 82% 94%, #fff, transparent),
+                radial-gradient(1px 1px at 92% 16%, #eee, transparent),
+                /* Étoiles scintillantes - couche 1 */
+                radial-gradient(2px 2px at 8% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 18% 35%, #eee, transparent),
+                radial-gradient(2px 2px at 28% 55%, #fff, transparent),
+                radial-gradient(2px 2px at 38% 75%, #eee, transparent),
+                radial-gradient(2px 2px at 48% 5%, #fff, transparent),
+                radial-gradient(2px 2px at 58% 25%, #eee, transparent),
+                radial-gradient(2px 2px at 68% 45%, #fff, transparent),
+                radial-gradient(2px 2px at 78% 65%, #eee, transparent),
+                radial-gradient(2px 2px at 88% 85%, #fff, transparent),
+                radial-gradient(2px 2px at 2% 95%, #eee, transparent),
+                /* Étoiles scintillantes - couche 2 */
+                radial-gradient(2px 2px at 15% 20%, #fff, transparent),
+                radial-gradient(2px 2px at 25% 40%, #eee, transparent),
+                radial-gradient(2px 2px at 35% 60%, #fff, transparent),
+                radial-gradient(2px 2px at 45% 80%, #eee, transparent),
+                radial-gradient(2px 2px at 55% 10%, #fff, transparent),
+                radial-gradient(2px 2px at 65% 30%, #eee, transparent),
+                radial-gradient(2px 2px at 75% 50%, #fff, transparent),
+                radial-gradient(2px 2px at 85% 70%, #eee, transparent),
+                radial-gradient(2px 2px at 95% 90%, #fff, transparent),
+                radial-gradient(2px 2px at 5% 100%, #eee, transparent),
+                /* Étoiles scintillantes - couche 3 */
+                radial-gradient(2px 2px at 12% 8%, #fff, transparent),
+                radial-gradient(2px 2px at 22% 28%, #eee, transparent),
+                radial-gradient(2px 2px at 32% 48%, #fff, transparent),
+                radial-gradient(2px 2px at 42% 68%, #eee, transparent),
+                radial-gradient(2px 2px at 52% 88%, #fff, transparent),
+                radial-gradient(2px 2px at 62% 12%, #eee, transparent),
+                radial-gradient(2px 2px at 72% 32%, #fff, transparent),
+                radial-gradient(2px 2px at 82% 52%, #eee, transparent),
+                radial-gradient(2px 2px at 92% 72%, #fff, transparent),
+                radial-gradient(2px 2px at 3% 92%, #eee, transparent);
+            background-size: 520px 520px, 590px 590px, 660px 660px, 730px 730px,
+                            800px 800px, 870px 870px, 940px 940px, 1010px 1010px,
+                            1080px 1080px, 1150px 1150px, 1220px 1220px, 1290px 1290px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px,
+                                 200px 50px, 30px 150px, 100px 50px, 200px 200px,
+                                 50px 100px, 150px 200px, 300px 300px, 100px 250px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .scroll-moon {
+            position: fixed;
+            top: 18vh;
+            right: clamp(-90px, -5vw, -30px);
+            width: clamp(180px, 26vw, 330px);
+            aspect-ratio: 1;
+            background: url("Lune 1 transparent.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
+            filter: drop-shadow(0 0 42px rgba(210, 220, 255, 0.24)) blur(0.2px);
+            transform: translate3d(var(--moon-x, 0px), var(--moon-y, 0px), 0) rotate(var(--moon-rotate, 10deg));
+            transition: opacity 0.3s ease;
+            will-change: transform;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(85, 85, 85, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            animation: fadeInDown 0.8s ease-out;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container:hover {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 5px 0 0 0;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            border-left: 4px solid white;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+
+        .sidebar-section p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .experience-item, .formation-item {
+            margin-bottom: 25px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .back-nav {
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .cv-grid { grid-template-columns: 1fr; }
+            header { text-align: center; justify-content: center; }
+            .container { margin: 10px; padding: 20px; }
+        }
+
+        /* LUNES DECORATIVES */
+        .moon-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: url("Lune 1 transparent.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.6;
+            animation: floatAnimation 4s ease-in-out infinite, spaceDrift 20s linear infinite;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+            transform-style: preserve-3d;
+        }
+
+        .moon-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 90px;
+            height: 90px;
+            background: url("Lune 2 transparent.png") no-repeat center;
+            background-size: contain;
+            opacity: 0.5;
+            z-index: -1;
+            animation: floatAnimation 5s ease-in-out infinite reverse, spaceDriftReverse 25s linear infinite;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+            transform-style: preserve-3d;
+        }
+        .music-theme-toggle {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            background: rgba(20, 20, 20, 0.62);
+            color: white;
+            font-size: 1.7rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .music-theme-toggle:hover {
+            transform: scale(1.08) rotate(-8deg);
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 10, 0.78);
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 18px;
+            left: 78px;
+            width: 52px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 24px;
+            background: rgba(20, 20, 20, 0.62);
+            color: white;
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            cursor: pointer;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .language-toggle:hover {
+            transform: scale(1.06);
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 10, 0.78);
+        }
+
+        body.music-theme {
+            --bg-color: #121212;
+            --card-bg: #000000;
+            --text-sub: #b3b3b3;
+            background: #121212 !important;
+            background-image: none !important;
+            animation: none !important;
+            color: #ffffff;
+        }
+
+        body.music-theme .about-box,
+        body.music-theme .project-card,
+        body.music-theme .doc-section,
+        body.music-theme .cv-vinyl {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background:
+                radial-gradient(circle at 50% 50%, #1ed760 0 8%, #000000 8.5% 12%, transparent 12.5%),
+                repeating-radial-gradient(circle at 50% 50%, #000000 0 7px, #101010 8px 12px, #050505 13px 16px);
+            border-color: rgba(30, 215, 96, 0.85);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), 0 0 28px rgba(29, 185, 84, 0.22);
+        }
+
+        body.music-theme .about-box::before,
+        body.music-theme .project-card::before,
+        body.music-theme .doc-section::before,
+        body.music-theme .cv-vinyl::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border-radius: inherit;
+            background: conic-gradient(from 20deg, transparent, rgba(255, 255, 255, 0.08), transparent 18%, transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body.music-theme .about-box > *,
+        body.music-theme .project-card > *,
+        body.music-theme .doc-section > *,
+        body.music-theme .cv-vinyl > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        body.music-theme .music-theme-toggle {
+            background: #1db954;
+            border-color: #1ed760;
+            color: #000000;
+        }
+
+        body.music-theme .language-toggle {
+            background: #000000;
+            border-color: #1ed760;
+            color: #1ed760;
+        }
+
+        .side-vinyl {
+            position: fixed;
+            top: 50%;
+            right: clamp(-180px, -12vw, -95px);
+            width: clamp(260px, 32vw, 430px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
+            background:
+                radial-gradient(circle at center, #1ed760 0 6%, #000 6.5% 10%, #1db954 10.5% 12%, transparent 12.5%),
+                repeating-radial-gradient(circle at center, #030303 0 8px, #111 9px 13px, #050505 14px 18px);
+            box-shadow: 0 0 45px rgba(29, 185, 84, 0.22), inset 0 0 42px rgba(255, 255, 255, 0.04);
+            transform: translateY(-50%) rotate(var(--side-vinyl-rotation, 0deg));
+            transition: opacity 0.25s ease;
+            will-change: transform;
+        }
+
+        .side-vinyl::before {
+            content: "";
+            position: absolute;
+            inset: 8%;
+            border-radius: inherit;
+            background: conic-gradient(from 30deg, transparent, rgba(255,255,255,0.09), transparent 16%, transparent 42%, rgba(255,255,255,0.06), transparent 58%);
+        }
+
+        body.music-theme .side-vinyl {
+            opacity: 1;
+        }
+
+        .music-note {
+            position: fixed;
+            top: var(--note-y);
+            right: var(--note-right);
+            color: #1ed760;
+            font-size: var(--note-size);
+            font-weight: 700;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 1;
+            text-shadow: 0 0 14px rgba(30, 215, 96, 0.58);
+            animation: musicNoteFall 1100ms ease-in forwards;
+        }
+
+        @keyframes musicNoteFall {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, -8px, 0) rotate(-12deg) scale(0.75);
+            }
+            18% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--note-drift), 120px, 0) rotate(var(--note-rotate)) scale(0.35);
+            }
+        }
+
+        body.music-theme .moon-top,
+        body.music-theme .moon-bottom,
+        body.music-theme .scroll-moon,
+        body.music-theme .stars-divider,
+        body.music-theme .stars,
+        body.music-theme .star-dust {
+            display: none;
+        }
+
+        body.music-theme::before {
+            display: none;
+            content: none;
+        }
+
+        body.music-theme .vinyl-spin {
+            animation: vinylSpin 900ms ease-out;
+        }
+
+        @keyframes vinylSpin {
+            from { transform: rotate(0deg) scale(1); }
+            55% { transform: rotate(230deg) scale(1.03); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
+            background-image:
+                radial-gradient(2px 2px at 12% 18%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 28% 72%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(3px 3px at 44% 34%, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 63% 22%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 78% 64%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(2px 2px at 91% 42%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 7% 59%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(3px 3px at 19% 86%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 36% 11%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(3px 3px at 54% 79%, rgba(255, 255, 255, 0.95), transparent),
+                radial-gradient(2px 2px at 70% 9%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 86% 88%, rgba(255, 255, 255, 0.85), transparent),
+                radial-gradient(2px 2px at 96% 16%, rgba(255, 255, 255, 0.95), transparent);
+        }
+
+        body.star-flash::before {
+            animation: starFlash 650ms ease-out;
+        }
+
+        .star-dust {
+            position: fixed;
+            left: var(--dust-x);
+            top: var(--dust-y);
+            width: var(--dust-size);
+            height: var(--dust-size);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 10px rgba(230, 235, 255, 0.9), 0 0 18px rgba(255, 255, 255, 0.45);
+            animation: starDustFall var(--dust-duration) ease-in forwards;
+        }
+
+        @keyframes starFlash {
+            0% { opacity: 0; }
+            28% { opacity: 0.95; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes starDustFall {
+            0% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--dust-drift), var(--dust-fall), 0) scale(0.25);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="music-theme-toggle" type="button" aria-label="Activer le theme musique" title="Theme musique">♪</button>
+    <button class="language-toggle" type="button" aria-label="Changer la langue" title="Changer la langue">FR</button>
+    <div class="moon-top"></div>
+    <div class="moon-bottom"></div>
+    <div class="scroll-moon" aria-hidden="true"></div>
+    <div class="side-vinyl" aria-hidden="true"></div>
+
+    <div class="back-nav">
+        <a href="index.html" class="back-link" data-i18n="common.back">← Retour au Portfolio</a>
+    </div>
+
+    <div class="container cv-vinyl">
+        <header>
+            <div class="header-text">
+                <h1>Mathis GIL</h1>
+                <p data-i18n="cv.subtitle">Technicien système et réseau en alternance</p>
+            </div>
+        </header>
+
+        <div class="cv-grid">
+            <!-- Colonne de gauche (Sidebar) -->
+            <aside>
+                <section class="sidebar-section">
+                    <h2 data-i18n="cv.contact">Contact</h2>
+                    <form id="contact-form" aria-label="Formulaire de contact">
+                        <label style="display:block; margin-bottom:8px;">Prénom<br><input name="firstName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
+                        <label style="display:block; margin-bottom:8px;">Nom<br><input name="lastName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
+                        <label style="display:block; margin-bottom:8px;">Adresse email<br><input name="email" type="email" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
+                        <label style="display:block; margin-bottom:8px;">Message<br><textarea name="message" required rows="4" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></textarea></label>
+                        <button type="submit" style="padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); background:#1db954; color:#000; cursor:pointer">Envoyer</button>
+                        <div id="contact-result" style="margin-top:8px; color:var(--text-sub);"></div>
+                    </form>
+                    <p data-i18n="cv.age">🎂 19 ans (18/10/2006)</p>
+                    <p data-i18n="cv.license">🚗 Permis B</p>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 data-i18n="cv.skills">Compétences</h2>
+                    <ul>
+                        <li data-i18n="cv.skill1">Montage / Démontage PC</li>
+                        <li>HTML & Python</li>
+                        <li data-i18n="cv.skill3">Maintenance de serveurs</li>
+                        <li data-i18n="cv.skill4">Paramétrage BIOS</li>
+                        <li>Pack Office</li>
+                    </ul>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 data-i18n="cv.softSkills">Savoir-être</h2>
+                    <ul>
+                        <li data-i18n="cv.soft1">Polyvalent</li>
+                        <li data-i18n="cv.soft2">Ambitieux</li>
+                        <li data-i18n="cv.soft3">Organisé</li>
+                        <li data-i18n="cv.soft4">Responsable</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- Colonne de droite (Main) -->
+            <main>
+                <section>
+                    <h2 data-i18n="cv.experience">Expériences</h2>
+                    <div class="experience-item">
+                        <div class="item-title" data-i18n="cv.job1">Équipier polyvalent - McDonald's</div>
+                        <div class="item-meta" data-i18n="cv.job1Meta">Juin - Août 2023 | Marignane</div>
+                        <ul>
+                            <li data-i18n="cv.job1Task1">Préparation des commandes</li>
+                            <li data-i18n="cv.job1Task2">Service à table</li>
+                            <li data-i18n="cv.job1Task3">Plonge et entretien</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-title" data-i18n="cv.job2">Stage Vétérinaire</div>
+                        <div class="item-meta">Nov. 2021 | Cabinet La Gavotte</div>
+                        <ul>
+                            <li data-i18n="cv.job2Task1">Observation d'opérations</li>
+                            <li data-i18n="cv.job2Task2">Entretien des salles de consultation</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2 data-i18n="cv.education">Formations</h2>
+                    <div class="formation-item">
+                        <div class="item-title" data-i18n="cv.degree1">BTS SIO (Services Informatiques aux Organisations)</div>
+                        <div class="item-meta">2025 - 2027 | M2S Formation, Vitrolles</div>
+                    </div>
+                    <div class="formation-item">
+                        <div class="item-title" data-i18n="cv.degree2">Baccalauréat Général</div>
+                        <div class="item-meta">2022 - 2025 | Lycée Maurice Genevoix</div>
+                    </div>
+                </section>
+
+                <section style="margin-top: 40px;">
+                    <h2 data-i18n="cv.interests">Intérêts</h2>
+                    <p data-i18n="cv.interest1">🎹 <strong>Piano :</strong> 4-5 ans en autodidacte</p>
+                    <p>🏀 <strong>Basket</strong></p>
+                    <p data-i18n="cv.interest3">💻 <strong>Informatique :</strong> Optimisation système</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        const themeButton = document.querySelector('.music-theme-toggle');
+        const languageButton = document.querySelector('.language-toggle');
+        const translations = {
+            fr: {
+                title: 'CV | Mathis GIL',
+                'common.back': '← Retour au Portfolio',
+                'cv.subtitle': 'Technicien système et réseau en alternance',
+                'cv.contact': 'Contact',
+                'cv.age': '🎂 19 ans (18/10/2006)',
+                'cv.license': '🚗 Permis B',
+                'cv.skills': 'Compétences',
+                'cv.skill1': 'Montage / Démontage PC',
+                'cv.skill3': 'Maintenance de serveurs',
+                'cv.skill4': 'Paramétrage BIOS',
+                'cv.softSkills': 'Savoir-être',
+                'cv.soft1': 'Polyvalent',
+                'cv.soft2': 'Ambitieux',
+                'cv.soft3': 'Organisé',
+                'cv.soft4': 'Responsable',
+                'cv.experience': 'Expériences',
+                'cv.job1': "Équipier polyvalent - McDonald's",
+                'cv.job1Meta': 'Juin - Août 2023 | Marignane',
+                'cv.job1Task1': 'Préparation des commandes',
+                'cv.job1Task2': 'Service à table',
+                'cv.job1Task3': 'Plonge et entretien',
+                'cv.job2': 'Stage Vétérinaire',
+                'cv.job2Task1': "Observation d'opérations",
+                'cv.job2Task2': 'Entretien des salles de consultation',
+                'cv.education': 'Formations',
+                'cv.degree1': 'BTS SIO (Services Informatiques aux Organisations)',
+                'cv.degree2': 'Baccalauréat Général',
+                'cv.interests': 'Intérêts',
+                'cv.interest1': '🎹 <strong>Piano :</strong> 4-5 ans en autodidacte',
+                'cv.interest3': '💻 <strong>Informatique :</strong> Optimisation système'
+            },
+            en: {
+                title: 'Resume | Mathis GIL',
+                'common.back': '← Back to Portfolio',
+                'cv.subtitle': 'Work-study systems and network technician',
+                'cv.contact': 'Contact',
+                'cv.age': '🎂 19 years old (10/18/2006)',
+                'cv.license': '🚗 Driving license',
+                'cv.skills': 'Skills',
+                'cv.skill1': 'PC assembly / disassembly',
+                'cv.skill3': 'Server maintenance',
+                'cv.skill4': 'BIOS configuration',
+                'cv.softSkills': 'Soft Skills',
+                'cv.soft1': 'Versatile',
+                'cv.soft2': 'Ambitious',
+                'cv.soft3': 'Organized',
+                'cv.soft4': 'Responsible',
+                'cv.experience': 'Experience',
+                'cv.job1': "Crew member - McDonald's",
+                'cv.job1Meta': 'June - August 2023 | Marignane',
+                'cv.job1Task1': 'Order preparation',
+                'cv.job1Task2': 'Table service',
+                'cv.job1Task3': 'Dishwashing and cleaning',
+                'cv.job2': 'Veterinary Internship',
+                'cv.job2Task1': 'Observed surgical procedures',
+                'cv.job2Task2': 'Maintained consultation rooms',
+                'cv.education': 'Education',
+                'cv.degree1': 'BTS SIO (IT Services for Organizations)',
+                'cv.degree2': 'General Baccalaureate',
+                'cv.interests': 'Interests',
+                'cv.interest1': '🎹 <strong>Piano:</strong> 4-5 years self-taught',
+                'cv.interest3': '💻 <strong>IT:</strong> System optimization'
+            }
+        };
+
+        function applyLanguage(language) {
+            const dictionary = translations[language] || translations.fr;
+            document.documentElement.lang = language;
+            document.title = dictionary.title;
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.dataset.i18n;
+                if (dictionary[key]) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+            languageButton.textContent = language.toUpperCase();
+            languageButton.setAttribute('aria-label', language === 'fr' ? 'Changer la langue en anglais' : 'Switch language to French');
+            languageButton.setAttribute('title', language === 'fr' ? 'Passer en anglais' : 'Switch to French');
+        }
+
+        let currentLanguage = localStorage.getItem('portfolio-lang') || 'fr';
+        applyLanguage(currentLanguage);
+
+        languageButton?.addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('portfolio-lang', currentLanguage);
+            applyLanguage(currentLanguage);
+        });
+
+        // Initial theme and button icon (show the icon of the other theme to switch to)
+        if (savedTheme !== 'moon') {
+            document.body.classList.add('music-theme');
+            themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
+            if (themeButton) themeButton.textContent = '🌙';
+        } else {
+            if (themeButton) themeButton.textContent = '♪';
+        }
+
+        themeButton?.addEventListener('click', function(event) {
+            document.body.classList.toggle('music-theme');
+            const musicEnabled = document.body.classList.contains('music-theme');
+            localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
+            themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
+            // When music theme is active show moon icon (to switch to moon), otherwise show music note
+            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
+        });
+
+        // Contact form handling: Formspree placeholder + mailto fallback
+        (function() {
+            const form = document.getElementById('contact-form');
+            const result = document.getElementById('contact-result');
+            if (!form) return;
+
+            const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
+            const recipientEmail = 'gilmathis498@gmail.com';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                result.textContent = 'Envoi en cours...';
+                const data = new FormData(form);
+
+                try {
+                    // Try to send via Formspree (replace endpoint with your Formspree form ID)
+                    const resp = await fetch(FORMSPREE_ENDPOINT, {
+                        method: 'POST',
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (resp.ok) {
+                        result.textContent = 'Message envoyé, merci !';
+                        form.reset();
+                        return;
+                    }
+                } catch (err) {
+                    // ignore and fallback
+                }
+
+                // Fallback: open user's mail client (mailto) so message is sent from user's mailbox
+                const mailBody = `Nom: ${data.get('lastName')}\nPrénom: ${data.get('firstName')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+                const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent('Contact depuis portfolio')}&body=${encodeURIComponent(mailBody)}`;
+                window.location.href = mailto;
+                result.textContent = 'Si l\'envoi automatique a échoué, votre client mail s\'ouvre.';
+            });
+        })();
+
+        let lastMusicNoteAt = 0;
+        const musicNotes = ['♪', '♫', '♬', '♩'];
+
+        function dropMusicNote() {
+            if (!document.body.classList.contains('music-theme')) {
+                return;
+            }
+
+            const now = Date.now();
+            if (now - lastMusicNoteAt < 140) {
+                return;
+            }
+            lastMusicNoteAt = now;
+
+            const note = document.createElement('span');
+            note.className = 'music-note';
+            note.textContent = musicNotes[Math.floor(Math.random() * musicNotes.length)];
+            note.style.setProperty('--note-y', `${window.innerHeight * 0.5 + (Math.random() - 0.5) * 130}px`);
+            note.style.setProperty('--note-right', `${Math.random() * 42 + 18}px`);
+            note.style.setProperty('--note-size', `${Math.random() * 12 + 18}px`);
+            note.style.setProperty('--note-drift', `${(Math.random() - 0.5) * 90}px`);
+            note.style.setProperty('--note-rotate', `${(Math.random() - 0.5) * 80}deg`);
+            document.body.appendChild(note);
+            note.addEventListener('animationend', () => note.remove(), { once: true });
+        }
+
+        document.addEventListener('click', function(event) {
+            const vinylCard = event.target.closest('.about-box, .project-card, .doc-section, .cv-vinyl');
+
+            if (vinylCard && document.body.classList.contains('music-theme')) {
+                vinylCard.classList.remove('vinyl-spin');
+                void vinylCard.offsetWidth;
+                vinylCard.classList.add('vinyl-spin');
+            }
+        });
+
+        // Flash d'etoiles et poussiere lumineuse au clic
+        document.addEventListener('click', function(event) {
+            if (document.body.classList.contains('music-theme')) {
+                return;
+            }
+
+            const clickedLink = event.target.closest('a[href]');
+
+            for (let i = 0; i < 34; i++) {
+                const dust = document.createElement('span');
+                const size = Math.random() * 3 + 2;
+                dust.className = 'star-dust';
+                dust.style.setProperty('--dust-x', `${event.clientX + (Math.random() - 0.5) * 22}px`);
+                dust.style.setProperty('--dust-y', `${event.clientY + (Math.random() - 0.5) * 14}px`);
+                dust.style.setProperty('--dust-size', `${size}px`);
+                dust.style.setProperty('--dust-drift', `${(Math.random() - 0.5) * 90}px`);
+                dust.style.setProperty('--dust-fall', `${Math.random() * 85 + 45}px`);
+                dust.style.setProperty('--dust-duration', `${Math.random() * 500 + 650}ms`);
+                document.body.appendChild(dust);
+                dust.addEventListener('animationend', () => dust.remove(), { once: true });
+            }
+
+            if (clickedLink && !event.metaKey && !event.ctrlKey && !event.shiftKey && clickedLink.target !== '_blank') {
+                const href = clickedLink.getAttribute('href');
+
+                if (href && !href.startsWith('#')) {
+                    event.preventDefault();
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 180);
+                }
+            }
+        });
+
+        // Effet parallax au défilement
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const scrollMoon = document.querySelector('.scroll-moon');
+            document.documentElement.style.setProperty('--side-vinyl-rotation', `${scrolled * 0.35}deg`);
+            dropMusicNote();
+
+            // Appliquer l'effet parallax aux lunes décoratives
+            const moonTop = document.querySelector('.moon-top');
+            const moonBottom = document.querySelector('.moon-bottom');
+
+            if (scrollMoon) {
+                scrollMoon.style.setProperty('--moon-x', `${Math.min(scrolled * 0.07, 120)}px`);
+                scrollMoon.style.setProperty('--moon-y', `${Math.min(scrolled * 0.2, 360)}px`);
+                scrollMoon.style.setProperty('--moon-rotate', `${10 - scrolled * 0.012}deg`);
+            }
+
+            if (moonTop) {
+                moonTop.style.transform = `translateY(${rate * 0.3}px)`;
+            }
+
+            if (moonBottom) {
+                moonBottom.style.transform = `translateY(${rate * 0.2}px)`;
+            }
+
+        });
+
+        // Animation d'entrée des éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments avec animation
+        document.querySelectorAll('.container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

@@ -783,8 +783,7 @@
 
         <section style="text-align: center; padding: 40px 0;">
             <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;" data-i18n="nav.contact">Contact</h2>
-            <p>Email : <strong>gilmathis498@gmail.com</strong></p>
-            <p>GitHub : <strong>@gilmathis498-create</strong></p>
+            <p>Pour me contacter, utilisez le formulaire sur la page CV.</p>
         </section>
 
     </div>
@@ -858,9 +857,13 @@
             applyLanguage(currentLanguage);
         });
 
+        // Initial theme and button icon (show the icon of the other theme to switch to)
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
+            if (themeButton) themeButton.textContent = '🌙';
+        } else {
+            if (themeButton) themeButton.textContent = '♪';
         }
 
         themeButton?.addEventListener('click', function(event) {
@@ -868,6 +871,7 @@
             const musicEnabled = document.body.classList.contains('music-theme');
             localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
+            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
         });
 
         let lastMusicNoteAt = 0;
