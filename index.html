@@ -857,6 +857,17 @@
             applyLanguage(currentLanguage);
         });
 
+        // Ensure CV button always navigates directly (capture phase to avoid global intercept)
+        document.querySelectorAll('.cv-button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopImmediatePropagation();
+                const href = btn.getAttribute('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            }, true);
+        });
+
         // Initial theme and button icon (show the icon of the other theme to switch to)
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
