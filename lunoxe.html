@@ -763,9 +763,13 @@
         let lastScrollY = window.pageYOffset;
         let musicThemeTrack = null;
         let scrollPauseTimer = null;
+        let scrollIdleTimer = null;
         let vinylPauseTimer = null;
+        let scrollAudioLocked = false;
+        let lastScrollEventAt = 0;
         const musicThemeTrackStart = 5.5;
         const scrollPauseDelay = 8500;
+        const scrollRestartDelay = 320;
         const vinylSpinDuration = 8500;
         const musicThemeTrackSrc = 'SCH - Deux mille Piano Cover Tutorial Instrumental.mp3';
 
@@ -795,7 +799,9 @@
 
         function pauseMusicThemeTrack() {
             clearTimeout(scrollPauseTimer);
+            clearTimeout(scrollIdleTimer);
             clearTimeout(vinylPauseTimer);
+            scrollAudioLocked = false;
             if (musicThemeTrack) {
                 musicThemeTrack.pause();
             }
@@ -803,9 +809,13 @@
 
         function pauseMusicThemeTrackSoon(delay, timerName) {
             if (timerName === 'scroll') {
-                clearTimeout(scrollPauseTimer);
+                if (scrollPauseTimer) return;
                 scrollPauseTimer = setTimeout(() => {
-                    if (musicThemeTrack) musicThemeTrack.pause();
+                    if (musicThemeTrack) {
+                        musicThemeTrack.pause();
+                    }
+                    scrollPauseTimer = null;
+                    scrollAudioLocked = Date.now() - lastScrollEventAt <= scrollRestartDelay;
                 }, delay);
             } else {
                 clearTimeout(vinylPauseTimer);
@@ -821,12 +831,26 @@
             }
 
             const now = Date.now();
+            lastScrollEventAt = now;
+            clearTimeout(scrollIdleTimer);
+            scrollIdleTimer = setTimeout(() => {
+                scrollAudioLocked = false;
+            }, scrollRestartDelay);
+
+            if (scrollAudioLocked) {
+                return;
+            }
+
             if (now - lastScrollSoundAt < 120) {
                 return;
             }
             lastScrollSoundAt = now;
+            const track = getMusicThemeTrack();
+            const shouldStartSession = track.paused || track.ended || track.currentTime < musicThemeTrackStart;
             playMusicThemeTrack(false);
-            pauseMusicThemeTrackSoon(scrollPauseDelay, 'scroll');
+            if (shouldStartSession) {
+                pauseMusicThemeTrackSoon(scrollPauseDelay, 'scroll');
+            }
         }
 
         function playVinylIntroTone() {
