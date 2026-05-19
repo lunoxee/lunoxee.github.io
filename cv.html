@@ -495,20 +495,6 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 18px rgba(210, 220, 255, 0.2);
         }
 
-        .contact-submit {
-            background: rgba(210, 220, 255, 0.16);
-            border-color: rgba(210, 220, 255, 0.48) !important;
-            color: #f4f7ff;
-            box-shadow: 0 8px 20px rgba(25, 35, 70, 0.18);
-        }
-
-        body.music-theme .contact-submit {
-            background: #1db954;
-            border-color: #1ed760 !important;
-            color: #000000;
-            box-shadow: none;
-        }
-
         body.music-theme .language-toggle {
             background: #000000;
             border-color: #1ed760;
@@ -682,18 +668,6 @@
             <aside>
                 <section class="sidebar-section">
                     <h2 data-i18n="cv.contact">Contact</h2>
-                    <form id="contact-form" aria-label="Formulaire de contact">
-                        <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
-                        <label style="display:block; margin-bottom:8px;">Prénom<br><input name="firstName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
-                        <label style="display:block; margin-bottom:8px;">Nom<br><input name="lastName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
-                        <label style="display:block; margin-bottom:8px;">Adresse email<br><input name="email" type="email" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
-                        <label style="display:block; margin-bottom:8px;">Message<br><textarea name="message" required rows="4" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></textarea></label>
-                        <button class="contact-submit" type="submit" style="padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); cursor:pointer">Envoyer</button>
-                        <div id="contact-result" style="margin-top:8px; color:var(--text-sub);"></div>
-                    </form>
                     <p data-i18n="cv.age">🎂 19 ans (18/10/2006)</p>
                     <p data-i18n="cv.license">🚗 Permis B</p>
                 </section>
@@ -879,44 +853,6 @@
             if (themeButton) themeButton.textContent = musicEnabled ? '☾' : '♪';
             if (!musicEnabled) pauseMusicThemeTrack();
         });
-
-        // Contact form handling for GitHub Pages static hosting.
-        (function() {
-            const form = document.getElementById('contact-form');
-            const result = document.getElementById('contact-result');
-            if (!form) return;
-
-            const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/gilmathis498@gmail.com';
-            const recipientEmail = 'gilmathis498@gmail.com';
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                result.textContent = 'Envoi en cours...';
-                const data = new FormData(form);
-                data.set('_replyto', data.get('email'));
-
-                try {
-                    const resp = await fetch(CONTACT_ENDPOINT, {
-                        method: 'POST',
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (resp.ok) {
-                        result.textContent = 'Message envoyé, merci !';
-                        form.reset();
-                        return;
-                    }
-                } catch (err) {
-                    // ignore and fallback
-                }
-
-                const mailBody = `Nom: ${data.get('lastName')}\nPrénom: ${data.get('firstName')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-                const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent('Contact depuis portfolio')}&body=${encodeURIComponent(mailBody)}`;
-                window.location.href = mailto;
-                result.textContent = 'L\'envoi automatique a échoué, votre client mail s\'ouvre en secours.';
-            });
-        })();
 
         let lastMusicNoteAt = 0;
         const musicNotes = ['♪', '♫', '♬', '♩'];
