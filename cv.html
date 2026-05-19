@@ -683,6 +683,10 @@
                 <section class="sidebar-section">
                     <h2 data-i18n="cv.contact">Contact</h2>
                     <form id="contact-form" aria-label="Formulaire de contact">
+                        <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
                         <label style="display:block; margin-bottom:8px;">Prénom<br><input name="firstName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
                         <label style="display:block; margin-bottom:8px;">Nom<br><input name="lastName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
                         <label style="display:block; margin-bottom:8px;">Adresse email<br><input name="email" type="email" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
@@ -876,23 +880,23 @@
             if (!musicEnabled) pauseMusicThemeTrack();
         });
 
-        // Contact form handling: Formspree placeholder + mailto fallback
+        // Contact form handling for GitHub Pages static hosting.
         (function() {
             const form = document.getElementById('contact-form');
             const result = document.getElementById('contact-result');
             if (!form) return;
 
-            const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
+            const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/gilmathis498@gmail.com';
             const recipientEmail = 'gilmathis498@gmail.com';
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 result.textContent = 'Envoi en cours...';
                 const data = new FormData(form);
+                data.set('_replyto', data.get('email'));
 
                 try {
-                    // Try to send via Formspree (replace endpoint with your Formspree form ID)
-                    const resp = await fetch(FORMSPREE_ENDPOINT, {
+                    const resp = await fetch(CONTACT_ENDPOINT, {
                         method: 'POST',
                         body: data,
                         headers: { 'Accept': 'application/json' }
@@ -907,11 +911,10 @@
                     // ignore and fallback
                 }
 
-                // Fallback: open user's mail client (mailto) so message is sent from user's mailbox
                 const mailBody = `Nom: ${data.get('lastName')}\nPrénom: ${data.get('firstName')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
                 const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent('Contact depuis portfolio')}&body=${encodeURIComponent(mailBody)}`;
                 window.location.href = mailto;
-                result.textContent = 'Si l\'envoi automatique a échoué, votre client mail s\'ouvre.';
+                result.textContent = 'L\'envoi automatique a échoué, votre client mail s\'ouvre en secours.';
             });
         })();
 
@@ -923,8 +926,8 @@
         let scrollPauseTimer = null;
         let vinylPauseTimer = null;
         const musicThemeTrackStart = 5.5;
-        const scrollPauseDelay = 320;
-        const vinylSpinDuration = 900;
+        const scrollPauseDelay = 8500;
+        const vinylSpinDuration = 8500;
         const musicThemeTrackSrc = 'SCH - Deux mille Piano Cover Tutorial Instrumental.mp3';
 
         function getMusicThemeTrack() {
