@@ -442,9 +442,10 @@
         }
 
         body.music-theme .music-theme-toggle {
-            background: #1db954;
-            border-color: #1ed760;
-            color: #000000;
+            background: rgba(17, 22, 34, 0.86);
+            border-color: rgba(210, 220, 255, 0.72);
+            color: #dfe7ff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 18px rgba(210, 220, 255, 0.2);
         }
 
         body.music-theme .language-toggle {
@@ -636,9 +637,9 @@
             <p data-i18n="lunoxe.securityText">Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées:</p>
             <ul>
                 <li data-i18n="lunoxe.security1">Désactivation de l'authentification par mot de passe (clés SSH privées uniquement).</li>
-                <li data-i18n="lunoxe.security2">Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].</li>
-                <li data-i18n="lunoxe.security3">Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion[cite: 58].</li>
-                <li data-i18n="lunoxe.security4">Limitation des connexions simultanées et restriction des privilèges[cite: 57].</li>
+                <li data-i18n="lunoxe.security2">Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>.</li>
+                <li data-i18n="lunoxe.security3">Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d'intrusion.</li>
+                <li data-i18n="lunoxe.security4">Limitation des connexions simultanées et restriction des privilèges.</li>
             </ul>
         </section>
 
@@ -646,7 +647,7 @@
 
         <section class="doc-section">
             <h2 data-i18n="lunoxe.resultsTitle">Résultats</h2>
-            <p data-i18n="lunoxe.resultsText">Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].</p>
+            <p data-i18n="lunoxe.resultsText">Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience.</p>
         </section>
 
         <footer>
@@ -665,24 +666,24 @@
                 'common.back': '← Retour au Portfolio',
                 'lunoxe.subtitle': 'Documentation Technique : Capture et Gestion des Logs',
                 'lunoxe.needTitle': 'Besoin du projet',
-                'lunoxe.needText': 'L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux[cite: 12, 13].',
+                'lunoxe.needText': 'L’entreprise possède un Wi-Fi ouvert au public. Selon la <span class="highlight">CNIL</span>, toute entreprise disposant d’un tel réseau doit conserver les journaux de connexion (logs) pendant <strong>un an</strong> afin d’identifier l’origine d’un éventuel usage frauduleux.',
                 'lunoxe.traceIntro': 'Les informations à tracer impérativement sont :',
-                'lunoxe.trace1': 'Date et heure de la connexion [cite: 15]',
-                'lunoxe.trace2': 'MAC source et destination [cite: 16, 17]',
-                'lunoxe.trace3': 'IP source et destination [cite: 18, 20]',
-                'lunoxe.trace4': 'Ports source et destination [cite: 19, 21]',
+                'lunoxe.trace1': 'Date et heure de la connexion',
+                'lunoxe.trace2': 'MAC source et destination',
+                'lunoxe.trace3': 'IP source et destination',
+                'lunoxe.trace4': 'Ports source et destination',
                 'lunoxe.researchTitle': 'Recherche et Solution',
-                'lunoxe.researchText': 'Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l’utilisateur[cite: 24, 27, 30].',
+                'lunoxe.researchText': 'Après avoir étudié des solutions comme les portails captifs ou Squid, nous avons choisi <span class="highlight">tcpdump</span> pour sa capacité à capturer les paquets en ligne de commande sans action de l’utilisateur.',
                 'lunoxe.optimTitle': 'Optimisations :',
-                'lunoxe.optimText': "Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web[cite: 43]. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS[cite: 45, 46].",
+                'lunoxe.optimText': "Le script a été développé en <strong>Python</strong> pour faciliter l'exploitation future sur une interface web. Les fichiers sont automatiquement compressés pour économiser de l'espace sur le stockage NAS.",
                 'lunoxe.securityTitle': "Sécurité de l'Infrastructure",
-                'lunoxe.securityText': 'Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées[cite: 53, 54]:',
-                'lunoxe.security1': "Désactivation de l'authentification par mot de passe (clés SSH privées uniquement)[cite: 55].",
-                'lunoxe.security2': 'Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>[cite: 56].',
-                'lunoxe.security3': 'Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d’intrusion[cite: 58].',
-                'lunoxe.security4': 'Limitation des connexions simultanées et restriction des privilèges[cite: 57].',
+                'lunoxe.securityText': 'Pour sécuriser le Raspberry Pi, plusieurs mesures critiques ont été appliquées:',
+                'lunoxe.security1': "Désactivation de l'authentification par mot de passe (clés SSH privées uniquement).",
+                'lunoxe.security2': 'Changement du port SSH par défaut vers le <span class="highlight">port 2222</span>.',
+                'lunoxe.security3': 'Installation de <span class="highlight">Fail2Ban</span> pour bloquer les tentatives d’intrusion.',
+                'lunoxe.security4': 'Limitation des connexions simultanées et restriction des privilèges.',
                 'lunoxe.resultsTitle': 'Résultats',
-                'lunoxe.resultsText': "Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel[cite: 59, 63]. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience[cite: 64, 65].",
+                'lunoxe.resultsText': "Le système envoie automatiquement les logs toutes les <strong>10 minutes</strong> vers un dossier partagé sur le NAS au format Excel. Aucune donnée n'est stockée localement sur le Raspberry Pi, garantissant une meilleure résilience.",
                 'lunoxe.footer': '&copy; 2026 - Documentation réalisée par Mathis'
             },
             en: {
@@ -691,24 +692,24 @@
                 'common.back': '← Back to Portfolio',
                 'lunoxe.subtitle': 'Technical Documentation: Log Capture and Management',
                 'lunoxe.needTitle': 'Project Need',
-                'lunoxe.needText': 'The company provides public Wi-Fi access. According to the <span class="highlight">CNIL</span>, any company offering this type of network must keep connection logs for <strong>one year</strong> to identify the source of possible fraudulent use[cite: 12, 13].',
+                'lunoxe.needText': 'The company provides public Wi-Fi access. According to the <span class="highlight">CNIL</span>, any company offering this type of network must keep connection logs for <strong>one year</strong> to identify the source of possible fraudulent use.',
                 'lunoxe.traceIntro': 'The required information to track is:',
-                'lunoxe.trace1': 'Connection date and time [cite: 15]',
-                'lunoxe.trace2': 'Source and destination MAC addresses [cite: 16, 17]',
-                'lunoxe.trace3': 'Source and destination IP addresses [cite: 18, 20]',
-                'lunoxe.trace4': 'Source and destination ports [cite: 19, 21]',
+                'lunoxe.trace1': 'Connection date and time',
+                'lunoxe.trace2': 'Source and destination MAC addresses',
+                'lunoxe.trace3': 'Source and destination IP addresses',
+                'lunoxe.trace4': 'Source and destination ports',
                 'lunoxe.researchTitle': 'Research and Solution',
-                'lunoxe.researchText': 'After studying solutions such as captive portals and Squid, we chose <span class="highlight">tcpdump</span> for its ability to capture packets from the command line without user action[cite: 24, 27, 30].',
+                'lunoxe.researchText': 'After studying solutions such as captive portals and Squid, we chose <span class="highlight">tcpdump</span> for its ability to capture packets from the command line without user action.',
                 'lunoxe.optimTitle': 'Optimizations:',
-                'lunoxe.optimText': 'The script was developed in <strong>Python</strong> to make future use through a web interface easier[cite: 43]. Files are automatically compressed to save NAS storage space[cite: 45, 46].',
+                'lunoxe.optimText': 'The script was developed in <strong>Python</strong> to make future use through a web interface easier. Files are automatically compressed to save NAS storage space.',
                 'lunoxe.securityTitle': 'Infrastructure Security',
-                'lunoxe.securityText': 'To secure the Raspberry Pi, several critical measures were applied[cite: 53, 54]:',
-                'lunoxe.security1': 'Password authentication disabled (private SSH keys only)[cite: 55].',
-                'lunoxe.security2': 'Default SSH port changed to <span class="highlight">port 2222</span>[cite: 56].',
-                'lunoxe.security3': '<span class="highlight">Fail2Ban</span> installed to block intrusion attempts[cite: 58].',
-                'lunoxe.security4': 'Simultaneous connections limited and privileges restricted[cite: 57].',
+                'lunoxe.securityText': 'To secure the Raspberry Pi, several critical measures were applied:',
+                'lunoxe.security1': 'Password authentication disabled (private SSH keys only).',
+                'lunoxe.security2': 'Default SSH port changed to <span class="highlight">port 2222</span>.',
+                'lunoxe.security3': '<span class="highlight">Fail2Ban</span> installed to block intrusion attempts.',
+                'lunoxe.security4': 'Simultaneous connections limited and privileges restricted.',
                 'lunoxe.resultsTitle': 'Results',
-                'lunoxe.resultsText': 'The system automatically sends logs every <strong>10 minutes</strong> to a shared folder on the NAS in Excel format[cite: 59, 63]. No data is stored locally on the Raspberry Pi, improving resilience[cite: 64, 65].',
+                'lunoxe.resultsText': 'The system automatically sends logs every <strong>10 minutes</strong> to a shared folder on the NAS in Excel format. No data is stored locally on the Raspberry Pi, improving resilience.',
                 'lunoxe.footer': '&copy; 2026 - Documentation by Mathis'
             }
         };
@@ -741,7 +742,7 @@
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
-            if (themeButton) themeButton.textContent = '🌙';
+            if (themeButton) themeButton.textContent = '☾';
         } else {
             if (themeButton) themeButton.textContent = '♪';
         }
@@ -751,7 +752,7 @@
             const musicEnabled = document.body.classList.contains('music-theme');
             localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
-            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
+            if (themeButton) themeButton.textContent = musicEnabled ? '☾' : '♪';
         });
 
         let lastMusicNoteAt = 0;

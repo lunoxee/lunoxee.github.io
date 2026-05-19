@@ -289,9 +289,10 @@
         }
 
         body.music-theme .music-theme-toggle {
-            background: #1db954;
-            border-color: #1ed760;
-            color: #000000;
+            background: rgba(17, 22, 34, 0.86);
+            border-color: rgba(210, 220, 255, 0.72);
+            color: #dfe7ff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 18px rgba(210, 220, 255, 0.2);
         }
 
         body.music-theme .language-toggle {
@@ -872,7 +873,7 @@
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
-            if (themeButton) themeButton.textContent = '🌙';
+            if (themeButton) themeButton.textContent = '☾';
         } else {
             if (themeButton) themeButton.textContent = '♪';
         }
@@ -882,7 +883,7 @@
             const musicEnabled = document.body.classList.contains('music-theme');
             localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
-            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
+            if (themeButton) themeButton.textContent = musicEnabled ? '☾' : '♪';
         });
 
         let lastMusicNoteAt = 0;

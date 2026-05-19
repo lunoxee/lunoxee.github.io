@@ -488,9 +488,24 @@
         }
 
         body.music-theme .music-theme-toggle {
+            background: rgba(17, 22, 34, 0.86);
+            border-color: rgba(210, 220, 255, 0.72);
+            color: #dfe7ff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 18px rgba(210, 220, 255, 0.2);
+        }
+
+        .contact-submit {
+            background: rgba(210, 220, 255, 0.16);
+            border-color: rgba(210, 220, 255, 0.48) !important;
+            color: #f4f7ff;
+            box-shadow: 0 8px 20px rgba(25, 35, 70, 0.18);
+        }
+
+        body.music-theme .contact-submit {
             background: #1db954;
-            border-color: #1ed760;
+            border-color: #1ed760 !important;
             color: #000000;
+            box-shadow: none;
         }
 
         body.music-theme .language-toggle {
@@ -671,7 +686,7 @@
                         <label style="display:block; margin-bottom:8px;">Nom<br><input name="lastName" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
                         <label style="display:block; margin-bottom:8px;">Adresse email<br><input name="email" type="email" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></label>
                         <label style="display:block; margin-bottom:8px;">Message<br><textarea name="message" required rows="4" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; color:inherit"></textarea></label>
-                        <button type="submit" style="padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); background:#1db954; color:#000; cursor:pointer">Envoyer</button>
+                        <button class="contact-submit" type="submit" style="padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); cursor:pointer">Envoyer</button>
                         <div id="contact-result" style="margin-top:8px; color:var(--text-sub);"></div>
                     </form>
                     <p data-i18n="cv.age">🎂 19 ans (18/10/2006)</p>
@@ -845,7 +860,7 @@
         if (savedTheme !== 'moon') {
             document.body.classList.add('music-theme');
             themeButton?.setAttribute('aria-label', 'Desactiver le theme musique');
-            if (themeButton) themeButton.textContent = '🌙';
+            if (themeButton) themeButton.textContent = '☾';
         } else {
             if (themeButton) themeButton.textContent = '♪';
         }
@@ -856,7 +871,7 @@
             localStorage.setItem('portfolio-theme', musicEnabled ? 'music' : 'moon');
             themeButton.setAttribute('aria-label', musicEnabled ? 'Desactiver le theme musique' : 'Activer le theme musique');
             // When music theme is active show moon icon (to switch to moon), otherwise show music note
-            if (themeButton) themeButton.textContent = musicEnabled ? '🌙' : '♪';
+            if (themeButton) themeButton.textContent = musicEnabled ? '☾' : '♪';
         });
 
         // Contact form handling: Formspree placeholder + mailto fallback
