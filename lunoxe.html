@@ -760,24 +760,21 @@
         const musicNotes = ['♪', '♫', '♬', '♩'];
         let lastScrollSoundAt = 0;
         let lastScrollY = window.pageYOffset;
-        let scrollScaleIndex = 0;
+        let scrollMotifIndex = 0;
         let scrollAudioContext = null;
-        const scrollScale = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25];
+        const scrollPianoMotif = [196, 246.94, 293.66, 349.23, 329.63, 246.94, 220, 196];
+        const vinylIntroMotif = [
+            { freq: 196, delay: 0, duration: 0.34 },
+            { freq: 246.94, delay: 0.18, duration: 0.34 },
+            { freq: 293.66, delay: 0.36, duration: 0.36 },
+            { freq: 392, delay: 0.58, duration: 0.46 },
+            { freq: 369.99, delay: 0.82, duration: 0.58 }
+        ];
 
-        function playScrollTone(direction) {
-            if (!document.body.classList.contains('music-theme') || Math.abs(direction) !== 1) {
-                return;
-            }
-
-            const now = Date.now();
-            if (now - lastScrollSoundAt < 150) {
-                return;
-            }
-            lastScrollSoundAt = now;
-
+        function getScrollAudioContext() {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!AudioContext) {
-                return;
+                return null;
             }
 
             if (!scrollAudioContext) {
@@ -788,23 +785,77 @@
                 scrollAudioContext.resume();
             }
 
-            const oscillator = scrollAudioContext.createOscillator();
-            const gain = scrollAudioContext.createGain();
-            const startAt = scrollAudioContext.currentTime;
-            const toneIndex = scrollScaleIndex;
+            return scrollAudioContext;
+        }
 
-            scrollScaleIndex = Math.max(0, Math.min(scrollScale.length - 1, scrollScaleIndex + direction));
+        function playPianoNote(frequency, startAt, duration, volume = 0.05) {
+            const context = getScrollAudioContext();
+            if (!context) {
+                return;
+            }
 
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(scrollScale[toneIndex], startAt);
+            const body = context.createOscillator();
+            const shimmer = context.createOscillator();
+            const gain = context.createGain();
+            const filter = context.createBiquadFilter();
+
+            body.type = 'triangle';
+            shimmer.type = 'sine';
+            body.frequency.setValueAtTime(frequency, startAt);
+            shimmer.frequency.setValueAtTime(frequency * 2.01, startAt);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1400, startAt);
+
             gain.gain.setValueAtTime(0.0001, startAt);
-            gain.gain.exponentialRampToValueAtTime(0.045, startAt + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.18);
+            gain.gain.exponentialRampToValueAtTime(volume, startAt + 0.018);
+            gain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
 
-            oscillator.connect(gain);
-            gain.connect(scrollAudioContext.destination);
-            oscillator.start(startAt);
-            oscillator.stop(startAt + 0.2);
+            body.connect(filter);
+            shimmer.connect(filter);
+            filter.connect(gain);
+            gain.connect(context.destination);
+            body.start(startAt);
+            shimmer.start(startAt);
+            body.stop(startAt + duration + 0.03);
+            shimmer.stop(startAt + duration + 0.03);
+        }
+
+        function playScrollTone(direction) {
+            if (!document.body.classList.contains('music-theme') || Math.abs(direction) !== 1) {
+                return;
+            }
+
+            const now = Date.now();
+            if (now - lastScrollSoundAt < 170) {
+                return;
+            }
+            lastScrollSoundAt = now;
+
+            const context = getScrollAudioContext();
+            if (!context) {
+                return;
+            }
+
+            const toneIndex = scrollMotifIndex;
+            scrollMotifIndex = (scrollMotifIndex + direction + scrollPianoMotif.length) % scrollPianoMotif.length;
+            playPianoNote(scrollPianoMotif[toneIndex], context.currentTime, 0.22, 0.04);
+        }
+
+        function playVinylIntroTone() {
+            if (!document.body.classList.contains('music-theme')) {
+                return;
+            }
+
+            const context = getScrollAudioContext();
+            if (!context) {
+                return;
+            }
+
+            const startAt = context.currentTime;
+            vinylIntroMotif.forEach(note => {
+                playPianoNote(note.freq, startAt + note.delay, note.duration, 0.055);
+                playPianoNote(note.freq * 0.5, startAt + note.delay, note.duration + 0.08, 0.026);
+            });
         }
 
         function dropMusicNote() {
@@ -837,6 +888,7 @@
                 vinylCard.classList.remove('vinyl-spin');
                 void vinylCard.offsetWidth;
                 vinylCard.classList.add('vinyl-spin');
+                playVinylIntroTone();
             }
         });
 
